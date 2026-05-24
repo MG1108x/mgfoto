@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marvin – Fotografie</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0e0d0b;
+      --fg: #e8e2d9;
+      --accent: #c9a96e;
+      --muted: #5a5550;
+      --card-bg: #161410;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: 'DM Mono', monospace;
+      font-weight: 300;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 4rem 5vw;
+      overflow: hidden;
+    }
+
+    .header-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 40%, rgba(201,169,110,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 70% at 20% 80%, rgba(201,169,110,0.05) 0%, transparent 55%);
+      pointer-events: none;
+    }
+
+    .grain {
+      position: absolute;
+      inset: 0;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 200px;
+      pointer-events: none;
+    }
+
+    .header-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.9s ease 0.2s forwards;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(4rem, 13vw, 10rem);
+      line-height: 0.9;
+      letter-spacing: -0.02em;
+      opacity: 0;
+      animation: fadeUp 1s ease 0.4s forwards;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .header-sub {
+      margin-top: 2rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      opacity: 0;
+      animation: fadeUp 1s ease 0.7s forwards;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      right: 5vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      opacity: 0;
+      animation: fadeUp 1s ease 1.2s forwards;
+    }
+
+    .scroll-hint::after {
+      content: '';
+      width: 1px;
+      height: 50px;
+      background: linear-gradient(to bottom, var(--muted), transparent);
+      animation: lineGrow 1.5s ease 1.5s both;
+    }
+
+    @keyframes lineGrow {
+      from { transform: scaleY(0); transform-origin: top; }
+      to { transform: scaleY(1); }
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 5vw;
+      background: linear-gradient(to bottom, rgba(14,13,11,0.9), transparent);
+      backdrop-filter: blur(4px);
+    }
+
+    .nav-name {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--fg); }
+
+    /* ── SECTION BASE ── */
+    section {
+      padding: 6rem 5vw;
+    }
+
+    .section-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 3rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      max-width: 80px;
+      height: 1px;
+      background: var(--muted);
+    }
+
+    /* ── GALLERY ── */
+    #gallery {
+      padding-top: 2rem;
+    }
+
+    .gallery-intro {
+      max-width: 520px;
+      margin-bottom: 4rem;
+    }
+
+    .gallery-intro h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .gallery-intro p {
+      font-size: 0.72rem;
+      line-height: 1.9;
+      color: var(--muted);
+    }
+
+    /* Upload zone */
+    .upload-zone {
+      border: 1px dashed var(--muted);
+      border-radius: 2px;
+      padding: 3rem 2rem;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.3s, background 0.3s;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+
+    .upload-zone:hover, .upload-zone.drag-over {
+      border-color: var(--accent);
+      background: rgba(201,169,110,0.04);
+    }
+
+    .upload-zone input {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+    }
+
+    .upload-icon {
+      width: 40px;
+      height: 40px;
+      margin: 0 auto 1rem;
+      opacity: 0.4;
+    }
+
+    .upload-zone p {
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+    }
+
+    .upload-zone span {
+      color: var(--accent);
+    }
+
+    /* Grid */
+    .photo-grid {
+      columns: 2;
+      gap: 1.2rem;
+    }
+
+    @media (min-width: 768px) {
+      .photo-grid { columns: 3; }
+    }
+
+    .photo-item {
+      break-inside: avoid;
+      margin-bottom: 1.2rem;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .photo-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .photo-item img {
+      width: 100%;
+      display: block;
+      filter: brightness(0.92) contrast(1.05);
+      transition: transform 0.6s ease, filter 0.4s ease;
+    }
+
+    .photo-item:hover img {
+      transform: scale(1.03);
+      filter: brightness(1) contrast(1.05);
+    }
+
+    .photo-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(14,13,11,0);
+      transition: background 0.4s;
+      display: flex;
+      align-items: flex-end;
+      padding: 1rem;
+    }
+
+    .photo-item:hover .photo-overlay {
+      background: rgba(14,13,11,0.35);
+    }
+
+    .photo-caption {
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--fg);
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .photo-item:hover .photo-caption {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .remove-btn {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      background: rgba(14,13,11,0.8);
+      border: none;
+      color: var(--muted);
+      font-size: 0.65rem;
+      padding: 0.3rem 0.5rem;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.3s, color 0.3s;
+      letter-spacing: 0.1em;
+    }
+
+    .photo-item:hover .remove-btn {
+      opacity: 1;
+    }
+
+    .remove-btn:hover { color: var(--accent); }
+
+    .empty-state {
+      text-align: center;
+      padding: 5rem 2rem;
+      color: var(--muted);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      border-top: 1px solid rgba(90,85,80,0.2);
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    @media (min-width: 768px) {
+      #about { grid-template-columns: 1fr 1fr; }
+    }
+
+    #about h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    #about p {
+      font-size: 0.72rem;
+      line-height: 1.9;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .gear-list {
+      margin-top: 2rem;
+      list-style: none;
+    }
+
+    .gear-list li {
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid rgba(90,85,80,0.2);
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+    }
+
+    .gear-list li span { color: var(--fg); }
+
+    /* ── CONTACT ── */
+    #contact {
+      border-top: 1px solid rgba(90,85,80,0.2);
+      text-align: center;
+    }
+
+    #contact h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      margin-bottom: 1.5rem;
+    }
+
+    #contact p {
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+    }
+
+    .contact-link {
+      display: inline-block;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 0.2rem;
+      transition: opacity 0.3s;
+    }
+
+    .contact-link:hover { opacity: 0.7; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2rem 5vw;
+      border-top: 1px solid rgba(90,85,80,0.15);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer span {
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+    }
+
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(10,9,8,0.95);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .lightbox.open {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: 100%;
+      max-height: 90vh;
+      object-fit: contain;
+      filter: brightness(0.95) contrast(1.04);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 2rem;
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .lightbox-close:hover { color: var(--fg); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-name">Marvin</div>
+    <ul class="nav-links">
+      <li><a href="#gallery">Arbeiten</a></li>
+      <li><a href="#about">Über mich</a></li>
+      <li><a href="#contact">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <header>
+    <div class="header-bg"></div>
+    <div class="grain"></div>
+    <p class="header-label">Fotografie · Karlsruhe</p>
+    <h1>Marvin<br><em>Fotografie</em></h1>
+    <p class="header-sub">Nikon ZF &nbsp;·&nbsp; Live &amp; Atmosphäre &nbsp;·&nbsp; Region Karlsruhe</p>
+    <div class="scroll-hint">Scroll</div>
+  </header>
+
+  <!-- GALLERY -->
+  <section id="gallery">
+    <p class="section-label">Portfolio</p>
+    <div class="gallery-intro">
+      <h2>Momente,<br><em>die bleiben.</em></h2>
+      <p>Eine Auswahl meiner Arbeiten – von Portraitkunde bis Landschaft. Ich baue mein Portfolio aktiv weiter auf und suche erste Möglichkeiten im Bereich Live- und Festivalfotografie.</p>
+    </div>
+
+    <div class="upload-zone" id="uploadZone">
+      <input type="file" id="fileInput" accept="image/*" multiple />
+      <svg class="upload-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1">
+        <rect x="4" y="4" width="32" height="32" rx="2"/>
+        <path d="M20 14v12M14 20l6-6 6 6"/>
+        <circle cx="28" cy="12" r="2" fill="currentColor" stroke="none"/>
+      </svg>
+      <p>Bilder hier ablegen oder <span>auswählen</span></p>
+      <p style="margin-top:0.5rem; font-size:0.6rem;">JPG, PNG, WEBP – beliebig viele</p>
+    </div>
+
+    <div class="photo-grid" id="photoGrid">
+      <div class="empty-state" id="emptyState">
+        Noch keine Fotos geladen.<br>Zieh deine besten Bilder einfach oben rein.
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div>
+      <p class="section-label">Über mich</p>
+      <h2>Licht &amp;<br><em>Atmosphäre</em></h2>
+      <p>Ich bin Marvin, Fotograf aus Karlsruhe mit einer Leidenschaft für Musik und Live-Events. Mit der Nikon ZF halte ich Momente fest, die sich im Gedächtnis einbrennen – ehrlich, nah und mit Gespür für das Licht.</p>
+      <p>Aktuell baue ich mein Portfolio im Bereich Event- und Festivelfotografie auf und freue mich über jeden Auftrag und jede Kooperation in der Region.</p>
+    </div>
+    <div>
+      <p class="section-label">Equipment</p>
+      <ul class="gear-list">
+        <li>Kamera <span>Nikon ZF</span></li>
+        <li>Objektiv <span>NIKKOR Z 50mm f/1.8 S</span></li>
+        <li>Bearbeitung <span>Lightroom / Capture One</span></li>
+        <li>Standort <span>Karlsruhe &amp; Region</span></li>
+        <li>Fokus <span>Live-Events, Musik, Atmosphäre</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="section-label">Kontakt</p>
+    <h2>Zusammen<br><em>arbeiten.</em></h2>
+    <p>Interesse an einer Zusammenarbeit? Ich freue mich über jede Anfrage.</p>
+    <a class="contact-link" href="mailto:deine@email.de">deine@email.de</a>
+  </section>
+
+  <footer>
+    <span>© 2026 Marvin Fotografie</span>
+    <span>Karlsruhe, Deutschland</span>
+  </footer>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose">Schließen ✕</button>
+    <img id="lightboxImg" src="" alt="" />
+  </div>
+
+  <script>
+    // ── Upload & Gallery ──
+    const fileInput = document.getElementById('fileInput');
+    const uploadZone = document.getElementById('uploadZone');
+    const photoGrid = document.getElementById('photoGrid');
+    const emptyState = document.getElementById('emptyState');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxClose = document.getElementById('lightboxClose');
+
+    let photos = [];
+
+    fileInput.addEventListener('change', e => handleFiles(e.target.files));
+
+    uploadZone.addEventListener('dragover', e => {
+      e.preventDefault();
+      uploadZone.classList.add('drag-over');
+    });
+    uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('drag-over'));
+    uploadZone.addEventListener('drop', e => {
+      e.preventDefault();
+      uploadZone.classList.remove('drag-over');
+      handleFiles(e.dataTransfer.files);
+    });
+
+    function handleFiles(files) {
+      [...files].forEach(file => {
+        if (!file.type.startsWith('image/')) return;
+        const url = URL.createObjectURL(file);
+        const id = Date.now() + Math.random();
+        photos.push({ id, url, name: file.name });
+        addPhotoToGrid(id, url, file.name);
+      });
+      emptyState.style.display = photos.length ? 'none' : 'block';
+    }
+
+    function addPhotoToGrid(id, url, name) {
+      const item = document.createElement('div');
+      item.className = 'photo-item';
+      item.dataset.id = id;
+
+      const label = name.replace(/\.[^/.]+$/, '').replace(/[-_]/g, ' ');
+
+      item.innerHTML = `
+        <img src="${url}" alt="${label}" loading="lazy" />
+        <div class="photo-overlay">
+          <span class="photo-caption">${label}</span>
+        </div>
+        <button class="remove-btn" data-id="${id}">Entfernen</button>
+      `;
+
+      item.querySelector('img').addEventListener('click', () => openLightbox(url));
+      item.querySelector('.remove-btn').addEventListener('click', e => {
+        e.stopPropagation();
+        removePhoto(id);
+      });
+
+      photoGrid.appendChild(item);
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => item.classList.add('visible'));
+      });
+    }
+
+    function removePhoto(id) {
+      photos = photos.filter(p => p.id !== id);
+      const el = photoGrid.querySelector(`[data-id="${id}"]`);
+      if (el) {
+        el.style.opacity = '0';
+        el.style.transform = 'scale(0.95)';
+        setTimeout(() => el.remove(), 400);
+      }
+      emptyState.style.display = photos.length ? 'none' : 'block';
+    }
+
+    // ── Lightbox ──
+    function openLightbox(url) {
+      lightboxImg.src = url;
+      lightbox.classList.add('open');
+    }
+
+    lightboxClose.addEventListener('click', () => lightbox.classList.remove('open'));
+    lightbox.addEventListener('click', e => {
+      if (e.target === lightbox) lightbox.classList.remove('open');
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') lightbox.classList.remove('open');
+    });
+
+    // ── Scroll reveal ──
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.photo-item').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
