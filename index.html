@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="color-scheme" content="light only" />
+<title>MG Foto — Fotografie aus Karlsruhe</title>
+<meta name="description" content="MG Foto — Fotografie aus Karlsruhe. Natur, Momente, Open-Air." />
+
+<!-- Vorschaukarte beim Teilen (iMessage, WhatsApp, Instagram, etc.) -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://mgfoto.media/" />
+<meta property="og:title" content="MG Foto — Fotografie aus Karlsruhe" />
+<meta property="og:description" content="Fotografie aus Karlsruhe. Natur, Momente, Open-Air." />
+<meta property="og:image" content="https://mgfoto.media/images/og-image.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="MG Foto — Fotografie aus Karlsruhe" />
+<meta name="twitter:description" content="Fotografie aus Karlsruhe. Natur, Momente, Open-Air." />
+<meta name="twitter:image" content="https://mgfoto.media/images/og-image.jpg" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    --paper:#f6f4ef;
+    --ink:#1a1917;
+    --soft:#8c8980;
+    --line:#e4e1d8;
+    --display:'Bricolage Grotesque', system-ui, sans-serif;
+    --ui:'Hanken Grotesk', system-ui, sans-serif;
+    --edge:clamp(1.25rem, 5vw, 4.5rem);
+    --maxw:1200px;
+  }
+  *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; color-scheme:light; background:var(--paper); }
+  body{
+    background:var(--paper); color:var(--ink);
+    font-family:var(--ui); line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{ color:inherit; text-decoration:none; }
+  ::selection{ background:var(--ink); color:var(--paper); }
+
+  /* feines Papierkorn über allem – kaum sichtbar, nimmt die digitale Glätte */
+  body::after{
+    content:''; position:fixed; inset:0; z-index:90; pointer-events:none; opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* Scroll-Fortschritt als Haarlinie oben */
+  .progress{
+    position:fixed; top:0; left:0; height:2px; width:0%;
+    background:var(--ink); z-index:100;
+  }
+
+  /* ── NAVIGATION ── */
+  .topbar{
+    position:fixed; top:0; left:0; right:0; z-index:80;
+    opacity:0; transform:translateY(-8px);
+    transition:opacity .4s ease, transform .4s ease;
+    pointer-events:none;
+    background:rgba(246,244,239,.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar.on{ opacity:1; transform:none; pointer-events:auto; }
+  .topbar-inner{
+    max-width:var(--maxw); margin-inline:auto;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:.95rem var(--edge);
+  }
+  .topbar .mini{
+    font-family:var(--display); font-weight:800; font-size:.9rem;
+    letter-spacing:.05em; text-transform:uppercase; line-height:1;
+  }
+  .topbar nav{ display:flex; gap:1.6rem; }
+  .topbar nav a{
+    font-size:.75rem; letter-spacing:.08em; color:var(--soft);
+    transition:color .25s;
+  }
+  .topbar nav a:hover, .topbar nav a.active{ color:var(--ink); }
+
+  /* ── HERO (bleibt stehen, Inhalt scrollt darüber) ── */
+  .hero-pin{ height:100vh; }
+  .hero{
+    position:sticky; top:0; height:100vh;
+    display:flex; flex-direction:column;
+    justify-content:center; align-items:flex-start;
+    padding:0 var(--edge);
+    max-width:var(--maxw); margin-inline:auto;
+    will-change:transform, opacity;
+  }
+  .hero .wordmark{
+    font-family:var(--display); font-weight:800;
+    font-size:clamp(4.5rem, 17vw, 13rem);
+    line-height:.86; letter-spacing:-.03em;
+    text-transform:uppercase;
+  }
+  .hero .wordmark span{ display:block; }
+  .hero .wordmark .row{ overflow:hidden; }
+  .hero .wordmark .row span{ transform:translateY(110%); }
+  body.ready .hero .wordmark .row span{
+    animation:riseUp 1s cubic-bezier(.19,1,.22,1) forwards;
+  }
+  body.ready .hero .wordmark .row:nth-child(2) span{ animation-delay:.1s; }
+  @keyframes riseUp{ to{ transform:none; } }
+
+  .hero .tagline{
+    margin-top:1.6rem;
+    font-size:.8rem; letter-spacing:.22em; text-transform:uppercase;
+    color:var(--soft);
+    opacity:0;
+  }
+  body.ready .hero .tagline{ animation:fadeIn .8s ease .6s forwards; }
+  .hero .claim{
+    margin-top:1rem; max-width:34ch;
+    font-size:clamp(1rem, 1.6vw, 1.15rem); color:var(--ink);
+    opacity:0;
+  }
+  body.ready .hero .claim{ animation:fadeIn .8s ease .8s forwards; }
+  .hero .claim em{ font-style:normal; color:var(--soft); }
+  @keyframes fadeIn{ to{ opacity:1; } }
+
+  .scrollcue{
+    position:absolute; bottom:2.2rem; left:var(--edge);
+    display:flex; align-items:center; gap:.7rem;
+    font-size:.68rem; letter-spacing:.2em; text-transform:uppercase; color:var(--soft);
+    opacity:0;
+  }
+  body.ready .scrollcue{ animation:fadeIn .8s ease 1.2s forwards; }
+  .scrollcue::after{
+    content:''; width:44px; height:1px; background:var(--soft);
+    animation:cueSlide 1.8s ease-in-out infinite;
+    transform-origin:left;
+  }
+  @keyframes cueSlide{ 0%,100%{ transform:scaleX(.4); } 50%{ transform:scaleX(1); } }
+
+  /* ── GALLERY: schiebt sich über den Hero ── */
+  .deck{
+    position:relative; z-index:10;
+    background:var(--paper);
+    border-top:1px solid var(--line);
+    padding:clamp(3rem,7vw,5rem) var(--edge) clamp(3rem,6vw,5rem);
+  }
+  .deck-inner{ max-width:var(--maxw); margin-inline:auto; }
+  .deck-label{
+    display:flex; align-items:center; gap:1rem;
+    font-size:.72rem; letter-spacing:.24em; text-transform:uppercase; color:var(--soft);
+    margin-bottom:clamp(2rem,5vw,3.5rem);
+  }
+  .deck-label::after{ content:''; flex:1; max-width:70px; height:1px; background:var(--ink); }
+
+  .grid{
+    display:grid; grid-template-columns:repeat(2,1fr);
+    gap:clamp(.8rem,2vw,1.6rem);
+  }
+  @media(min-width:760px){ .grid{ grid-template-columns:repeat(3,1fr); } }
+
+  .shot{
+    position:relative; aspect-ratio:4/5; overflow:hidden;
+    background:#ece9e1; cursor:pointer;
+    box-shadow:0 14px 34px -18px rgba(26,25,23,.35);
+    /* Startzustand fürs Einfliegen */
+    opacity:0;
+    transform:translateY(70px) rotate(var(--tilt,0deg));
+    transition:opacity .8s cubic-bezier(.19,1,.22,1), transform .8s cubic-bezier(.19,1,.22,1);
+    transition-delay:var(--d,0s);
+  }
+  /* abwechselnde Einflugrichtung + leichte Schräglage wie hingelegte Prints */
+  .shot:nth-child(3n+1){ --tilt:-1.6deg; transform:translate(-60px,50px) rotate(-4deg); }
+  .shot:nth-child(3n+2){ --tilt:.9deg;  transform:translate(0,80px) rotate(2.5deg); }
+  .shot:nth-child(3n)  { --tilt:1.4deg; transform:translate(60px,50px) rotate(4deg); }
+
+  .shot.in{
+    opacity:1;
+    transform:translate(0,0) rotate(var(--tilt,0deg));
+  }
+  .shot:hover{ transform:translate(0,-6px) rotate(0deg); transition-delay:0s; }
+
+  .shot img{
+    width:100%; height:100%; object-fit:cover; display:block;
+    object-position:50% calc(50% + var(--py, 0%));
+    transition:transform .7s cubic-bezier(.19,1,.22,1);
+  }
+  .shot:hover img{ transform:scale(1.05); }
+
+  .shot.is-empty{ cursor:default; box-shadow:none; }
+  .shot.is-empty img{ display:none; }
+  .shot.is-empty::after{
+    content:attr(data-label);
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    font-size:.72rem; letter-spacing:.14em; color:var(--soft);
+  }
+
+  /* ── REVEAL-Grundlage für Text-Sektionen ── */
+  .reveal{
+    opacity:0; transform:translateY(46px);
+    transition:opacity .9s cubic-bezier(.19,1,.22,1), transform .9s cubic-bezier(.19,1,.22,1);
+    transition-delay:var(--d,0s);
+  }
+  .reveal.in{ opacity:1; transform:none; }
+
+  /* ── ABOUT ── */
+  .about{
+    position:relative; z-index:10; background:var(--paper);
+    border-top:1px solid var(--line);
+    padding:clamp(3.5rem,8vw,6rem) var(--edge);
+  }
+  .about-inner{
+    max-width:var(--maxw); margin-inline:auto;
+    display:grid; grid-template-columns:1fr; gap:1.3rem;
+  }
+  .label{
+    font-size:.72rem; letter-spacing:.24em; text-transform:uppercase; color:var(--soft);
+  }
+  .about h2{
+    font-family:var(--display); font-weight:800;
+    font-size:clamp(1.9rem,4.5vw,3.2rem); line-height:1.05; letter-spacing:-.02em;
+    max-width:22ch;
+  }
+  .about p{ max-width:52ch; font-size:1.02rem; }
+  .about .gear{ font-size:.85rem; color:var(--soft); margin-top:.4rem; }
+
+  /* ── CONTACT ── */
+  .contact{
+    position:relative; z-index:10; background:var(--paper);
+    border-top:1px solid var(--line);
+    padding:clamp(3.5rem,8vw,6rem) var(--edge) clamp(4rem,9vw,7rem);
+  }
+  .contact-inner{ max-width:var(--maxw); margin-inline:auto; }
+  .contact h2{
+    font-family:var(--display); font-weight:800;
+    font-size:clamp(2rem,5vw,3.4rem); letter-spacing:-.02em; margin-top:.4rem;
+  }
+  .contact-lead{ color:var(--soft); margin-top:.7rem; max-width:46ch; }
+
+  .cform{ margin-top:2.2rem; max-width:34rem; }
+  .cfield{ margin-bottom:1.15rem; }
+  .cfield label{
+    display:block; font-size:.72rem; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--soft); margin-bottom:.45rem;
+  }
+  .cfield input, .cfield textarea{
+    width:100%; font:inherit; color:var(--ink);
+    background:#fbfaf7; border:1px solid var(--line); border-radius:0;
+    padding:.75rem .85rem; transition:border-color .2s;
+    resize:vertical;
+  }
+  .cfield input:focus, .cfield textarea:focus{ outline:none; border-color:var(--ink); }
+  .hp{ position:absolute; left:-9999px; opacity:0; }
+  .cbtn{
+    font:inherit; font-weight:600; cursor:pointer;
+    background:var(--ink); color:var(--paper);
+    border:1px solid var(--ink); padding:.75rem 2rem;
+    transition:transform .25s cubic-bezier(.19,1,.22,1), opacity .2s;
+  }
+  .cbtn:hover{ transform:translateY(-2px); opacity:.9; }
+  .cbtn:disabled{ opacity:.5; cursor:default; transform:none; }
+  .cstatus{ margin-top:1rem; font-size:.85rem; min-height:1.2em; }
+  .cstatus.ok{ color:#3c7a4b; }
+  .cstatus.err{ color:#b4452f; }
+  .links{ margin-top:1.6rem; }
+  .links a{
+    font-size:.8rem; letter-spacing:.06em; color:var(--soft);
+    border-bottom:1px solid var(--line); padding-bottom:.15rem;
+    transition:color .25s, border-color .25s;
+  }
+  .links a:hover{ color:var(--ink); border-color:var(--ink); }
+
+  footer{
+    position:relative; z-index:10; background:var(--paper);
+    border-top:1px solid var(--line);
+    padding:1.6rem var(--edge) 2.4rem;
+  }
+  .footer-inner{
+    max-width:var(--maxw); margin-inline:auto;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:.5rem;
+    font-size:.72rem; color:var(--soft); letter-spacing:.04em;
+  }
+
+  /* ── LIGHTBOX ── */
+  .lb{
+    position:fixed; inset:0; z-index:120;
+    background:rgba(26,25,23,.93);
+    display:flex; align-items:center; justify-content:center;
+    padding:clamp(1rem,4vw,3rem);
+    opacity:0; visibility:hidden; pointer-events:none;
+    transition:opacity .35s ease, visibility 0s linear .35s;
+  }
+  .lb.open{
+    opacity:1; visibility:visible; pointer-events:auto;
+    transition:opacity .35s ease;
+  }
+  .lb img{
+    max-width:100%; max-height:90vh; object-fit:contain;
+    transition:opacity .18s ease;
+  }
+  .lb-close{
+    position:absolute; top:1.3rem; right:1.5rem;
+    background:none; border:none; cursor:pointer;
+    color:rgba(246,244,239,.7); font-size:.74rem;
+    letter-spacing:.12em; text-transform:uppercase;
+    transition:color .25s;
+  }
+  .lb-close:hover{ color:#fff; }
+  .lb-nav{
+    position:absolute; top:50%; transform:translateY(-50%);
+    background:none; border:none; cursor:pointer;
+    color:rgba(246,244,239,.55); font-size:2rem; line-height:1;
+    padding:1rem .9rem; transition:color .25s;
+  }
+  .lb-nav:hover{ color:#fff; }
+  .lb-prev{ left:.4rem; }
+  .lb-next{ right:.4rem; }
+  .lb-count{
+    position:absolute; bottom:1.3rem; left:50%; transform:translateX(-50%);
+    color:rgba(246,244,239,.6); font-size:.72rem; letter-spacing:.22em;
+  }
+  /* fliegender Klon für den Zoom aus der Kachel */
+  .lb-clone{
+    position:fixed; z-index:130; object-fit:cover; margin:0;
+    transition:top .45s cubic-bezier(.19,1,.22,1), left .45s cubic-bezier(.19,1,.22,1),
+               width .45s cubic-bezier(.19,1,.22,1), height .45s cubic-bezier(.19,1,.22,1),
+               opacity .3s ease;
+    will-change:top,left,width,height;
+    pointer-events:none;
+  }
+
+  /* ── INTRO-LOADER ── */
+  .loader{
+    position:fixed; inset:0; z-index:200;
+    background:var(--paper);
+    display:flex; align-items:center; justify-content:center;
+    transition:opacity .5s ease;
+  }
+  .loader.done{ opacity:0; pointer-events:none; }
+  .loader-mark{
+    font-family:var(--display); font-weight:800; font-size:1.05rem;
+    letter-spacing:.08em; text-transform:uppercase;
+    opacity:0; animation:fadeIn .5s ease .1s forwards;
+  }
+
+  /* ── CUSTOM CURSOR (nur Desktop) ── */
+  .cursor{
+    position:fixed; top:0; left:0; z-index:95;
+    width:58px; height:58px; border-radius:50%;
+    background:var(--ink); color:var(--paper);
+    display:flex; align-items:center; justify-content:center;
+    font-size:.52rem; letter-spacing:.16em; text-transform:uppercase;
+    pointer-events:none;
+    opacity:0; transform:translate(-50%,-50%) scale(.5);
+    transition:opacity .25s ease, transform .25s ease;
+  }
+  .cursor.on{ opacity:1; transform:translate(-50%,-50%) scale(1); }
+  @media (hover:none), (pointer:coarse){ .cursor{ display:none; } }
+  @media (hover:hover) and (pointer:fine){
+    .shot:not(.is-empty){ cursor:none; }
+  }
+
+  /* ── KINETISCHER ABSCHLUSS ── */
+  .outro{
+    position:relative; z-index:10; background:var(--paper);
+    border-top:1px solid var(--line);
+    padding:clamp(3rem,9vw,6rem) var(--edge) clamp(2rem,5vw,3.5rem);
+  }
+  .outro-inner{ max-width:var(--maxw); margin-inline:auto; }
+  .outro-mark{
+    font-family:var(--display); font-weight:800; text-transform:uppercase;
+    font-size:clamp(3.2rem,13vw,9.5rem); line-height:.88; letter-spacing:-.03em;
+  }
+  .outro-mark .row{ display:block; overflow:hidden; }
+  .outro-mark .row span{
+    display:block; transform:translateY(110%);
+    transition:transform 1s cubic-bezier(.19,1,.22,1);
+  }
+  .outro-mark .row:nth-child(2) span{ transition-delay:.12s; }
+  .outro.in .row span{ transform:none; }
+
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
+    outline:2px solid var(--ink); outline-offset:3px;
+  }
+
+  /* Reduzierte Bewegung: alles sofort sichtbar, nichts fliegt */
+  @media(prefers-reduced-motion:reduce){
+    *{ animation:none !important; transition:none !important; }
+    .shot, .reveal{ opacity:1 !important; transform:none !important; }
+    .hero .wordmark .row span{ transform:none; }
+    .hero .tagline, .hero .claim, .scrollcue{ opacity:1; }
+    .topbar{ opacity:1; transform:none; pointer-events:auto; }
+    .outro .row span{ transform:none !important; }
+    .loader{ display:none !important; }
+    .cursor{ display:none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="loader" id="loader" aria-hidden="true">
+  <span class="loader-mark">MG&nbsp;Foto</span>
+</div>
+
+<div class="cursor" id="cursor" aria-hidden="true">Ansehen</div>
+
+<div class="progress" id="progress"></div>
+
+<header class="topbar" id="topbar">
+  <div class="topbar-inner">
+    <a class="mini" href="#hero">MG&nbsp;Foto</a>
+    <nav>
+      <a href="#gallery">Arbeiten</a>
+      <a href="#about">Über mich</a>
+      <a href="#contact">Kontakt</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO: bleibt beim Scrollen stehen, Galerie schiebt sich darüber -->
+<div class="hero-pin">
+  <section class="hero" id="hero">
+    <h1 class="wordmark">
+      <span class="row"><span>MG</span></span>
+      <span class="row"><span>Foto</span></span>
+    </h1>
+    <p class="tagline">Licht. Momente. Geschichten.</p>
+    <p class="claim">Momente vergehen in Sekunden. <em>Ich glaube daran, dass die besten davon bleiben sollten – deshalb fotografiere ich.</em></p>
+    <div class="scrollcue">Scroll</div>
+  </section>
+</div>
+
+<!--
+  BILDER AUSTAUSCHEN:
+  1. Fotos in den Ordner /images legen (01.jpg, 02.jpg …)
+  2. Dateiname unten muss passen: src="images/01.jpg"
+  3. alt="" kurz beschreiben (gut für Google & Barrierefreiheit)
+  Alle Kacheln sind einheitlich (4:5) — Klick öffnet das Bild groß.
+  Jedes Bild versucht zuerst .jpg, dann automatisch .JPG.
+-->
+<section class="deck" id="gallery">
+  <div class="deck-inner">
+    <p class="deck-label">Ausgewählte Arbeiten</p>
+    <div class="grid">
+      <figure class="shot" data-label="01" style="--d:.0s">
+        <img src="images/01.jpg" alt="" loading="lazy" onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/01.JPG';}else{this.closest('.shot').classList.add('is-empty');}">
+      </figure>
+      <figure class="shot" data-label="02" style="--d:.08s">
+        <img src="images/02.jpg" alt="" loading="lazy" onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/02.JPG';}else{this.closest('.shot').classList.add('is-empty');}">
+      </figure>
+      <figure class="shot" data-label="03" style="--d:.16s">
+        <img src="images/03.jpg" alt="" loading="lazy" onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/03.JPG';}else{this.closest('.shot').classList.add('is-empty');}">
+      </figure>
+      <figure class="shot" data-label="04" style="--d:.0s">
+        <img src="images/04.jpg" alt="" loading="lazy" onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/04.JPG';}else{this.closest('.shot').classList.add('is-empty');}">
+      </figure>
+      <figure class="shot" data-label="05" style="--d:.08s">
+        <img src="images/05.jpg" alt="" loading="lazy" onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/05.JPG';}else{this.closest('.shot').classList.add('is-empty');}">
+      </figure>
+      <figure class="shot" data-label="06" style="--d:.16s">
+        <img src="images/06.jpg" alt="" loading="lazy" onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/06.JPG';}else{this.closest('.shot').classList.add('is-empty');}">
+      </figure>
+      <figure class="shot" data-label="07" style="--d:.0s">
+        <img src="images/07.jpg" alt="" loading="lazy" onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/07.JPG';}else{this.closest('.shot').classList.add('is-empty');}">
+      </figure>
+      <figure class="shot" data-label="08" style="--d:.08s">
+        <img src="images/08.jpg" alt="" loading="lazy" onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/08.JPG';}else{this.closest('.shot').classList.add('is-empty');}">
+      </figure>
+      <figure class="shot" data-label="09" style="--d:.16s">
+        <img src="images/09.jpg" alt="" loading="lazy" onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/09.JPG';}else{this.closest('.shot').classList.add('is-empty');}">
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-inner">
+    <p class="label reveal">Wer bin ich</p>
+    <h2 class="reveal" style="--d:.08s">Nah dran, statt weit weg.</h2>
+    <p class="reveal" style="--d:.16s">Ich bin Marvin aus Karlsruhe. Was mich antreibt: Die meisten Augenblicke sind nach Sekunden vorbei – das richtige Licht, eine Stimmung, ein Blick. Ich will die festhalten, die es wert sind, zu bleiben.</p>
+    <p class="reveal" style="--d:.24s">Deshalb bin ich nah dran statt weit weg, ehrlich statt gestellt und unkompliziert in der Zusammenarbeit. Kein starres Konzept, sondern ein offenes Auge für das, was gerade passiert.</p>
+    <p class="reveal" style="--d:.32s">Zu finden bin ich überall dort, wo solche Momente entstehen – in der Natur, unterwegs auf Reisen und besonders gern auf Open-Airs und Live-Events in der Region.</p>
+    <p class="gear reveal" style="--d:.4s">Nikon ZF · NIKKOR Z 50 mm f/1.8 S · Tamron 28–75 mm f/2.8 G2</p>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <p class="label reveal">Kontakt</p>
+    <h2 class="reveal" style="--d:.08s">Schreib mir.</h2>
+    <p class="contact-lead reveal" style="--d:.16s">Du hast einen Moment, der festgehalten werden soll – ein Event, ein Open-Air, eine Idee? Schreib mir gern direkt hier oder folge mir auf Instagram.</p>
+
+    <!--
+      KONTAKTFORMULAR (Web3Forms) – ist aktiv.
+      Nachrichten gehen automatisch an die bei Web3Forms hinterlegte Mailadresse.
+    -->
+    <form id="contactForm" class="cform reveal" style="--d:.24s">
+      <input type="hidden" name="access_key" value="450d4250-469d-4e4e-aeac-be2c9e714dad" />
+      <input type="hidden" name="subject" value="Neue Anfrage über mgfoto.media" />
+      <input type="hidden" name="from_name" value="MG Foto Website" />
+      <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" />
+
+      <div class="cfield">
+        <label for="cf-mail">E-Mail (für meine Antwort)</label>
+        <input id="cf-mail" type="email" name="email" required autocomplete="email" />
+      </div>
+      <div class="cfield">
+        <label for="cf-msg">Deine Anfrage</label>
+        <textarea id="cf-msg" name="message" rows="5" required></textarea>
+      </div>
+      <button type="submit" class="cbtn">Senden</button>
+      <p class="cstatus" id="cStatus" role="status" aria-live="polite"></p>
+    </form>
+
+    <div class="links reveal" style="--d:.32s">
+      <a href="https://www.instagram.com/marvin.foto/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+</section>
+
+<section class="outro" aria-hidden="true">
+  <div class="outro-inner">
+    <p class="outro-mark">
+      <span class="row"><span>MG</span></span>
+      <span class="row"><span>Foto</span></span>
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 MG Foto</span>
+    <span>Karlsruhe</span>
+  </div>
+</footer>
+
+<div class="lb" id="lb">
+  <button class="lb-close" id="lbClose">Schließen ✕</button>
+  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Vorheriges Bild">‹</button>
+  <button class="lb-nav lb-next" id="lbNext" aria-label="Nächstes Bild">›</button>
+  <img id="lbImg" src="" alt="" />
+  <span class="lb-count" id="lbCount"></span>
+</div>
+
+<script>
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Intro-Loader – nur beim ersten Besuch pro Sitzung
+  var loader = document.getElementById('loader');
+  function pageReady(){ document.body.classList.add('ready'); }
+  if(reduced || sessionStorage.getItem('mgIntro')){
+    loader.classList.add('done');
+    pageReady();
+  } else {
+    sessionStorage.setItem('mgIntro','1');
+    setTimeout(function(){
+      loader.classList.add('done');
+      pageReady();
+    }, 950);
+  }
+  loader.addEventListener('transitionend', function(){ loader.remove(); });
+
+  // Einfliegen der Bilder & Textblöcke
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){
+        en.target.classList.add('in');
+        io.unobserve(en.target);
+      }
+    });
+  }, { threshold:.15, rootMargin:'0px 0px -6% 0px' });
+  document.querySelectorAll('.shot, .reveal, .outro').forEach(function(el){ io.observe(el); });
+  var shots = Array.prototype.slice.call(document.querySelectorAll('.shot'));
+
+  // Hero: beim Scrollen leicht zurückweichen (Tiefen-Effekt) + Topbar/Progress
+  var hero = document.getElementById('hero');
+  var topbar = document.getElementById('topbar');
+  var navLinks = document.querySelectorAll('.topbar nav a');
+  var spySections = ['gallery','about','contact'].map(function(id){ return document.getElementById(id); });
+  var progress = document.getElementById('progress');
+  var ticking = false;
+
+  function onScroll(){
+    var y = window.scrollY;
+    var vh = window.innerHeight;
+    var doc = document.documentElement.scrollHeight - vh;
+
+    progress.style.width = (doc > 0 ? (y / doc) * 100 : 0) + '%';
+    topbar.classList.toggle('on', y > vh * .75);
+
+    // dezenter Scroll-Spy: aktiver Abschnitt wird dunkel markiert
+    var current = '';
+    spySections.forEach(function(sec){
+      if(sec && sec.getBoundingClientRect().top < vh * .5) current = sec.id;
+    });
+    navLinks.forEach(function(a){
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+
+    // sanfter Parallax innerhalb der Bildkacheln
+    if(!reduced){
+      shots.forEach(function(s){
+        var r = s.getBoundingClientRect();
+        if(r.bottom < 0 || r.top > vh) return;
+        var p = (r.top + r.height / 2 - vh / 2) / vh;
+        s.style.setProperty('--py', (p * -7).toFixed(2) + '%');
+      });
+    }
+
+    if(!reduced){
+      var p = Math.min(y / vh, 1);
+      hero.style.transform = 'translateY(' + (p * -40) + 'px) scale(' + (1 - p * .06) + ')';
+      hero.style.opacity = String(1 - p * .55);
+    }
+    ticking = false;
+  }
+  window.addEventListener('scroll', function(){
+    if(!ticking){ requestAnimationFrame(onScroll); ticking = true; }
+  }, { passive:true });
+  onScroll();
+
+  // Lightbox: Zoom aus der Kachel, Blättern, Zähler, Wischgesten
+  var lb = document.getElementById('lb');
+  var lbImg = document.getElementById('lbImg');
+  var lbCount = document.getElementById('lbCount');
+  var lbIndex = -1, lbList = [], lbBusy = false;
+
+  function liveShots(){
+    return shots.filter(function(s){ return !s.classList.contains('is-empty'); });
+  }
+  function pad(n){ return (n < 10 ? '0' : '') + n; }
+  function updateCount(){
+    lbCount.textContent = pad(lbIndex + 1) + ' / ' + pad(lbList.length);
+  }
+  function setRect(el, r){
+    el.style.left = r.left + 'px'; el.style.top = r.top + 'px';
+    el.style.width = r.width + 'px'; el.style.height = r.height + 'px';
+  }
+  function targetRect(img){
+    var vw = window.innerWidth, vh = window.innerHeight;
+    var maxW = vw * .92, maxH = vh * .9;
+    var ratio = (img.naturalWidth || 4) / (img.naturalHeight || 5);
+    var w = maxW, h = w / ratio;
+    if(h > maxH){ h = maxH; w = h * ratio; }
+    return { left:(vw - w) / 2, top:(vh - h) / 2, width:w, height:h };
+  }
+  function openLb(idx){
+    lbList = liveShots();
+    if(!lbList[idx] || lbBusy) return;
+    lbIndex = idx;
+    var img = lbList[idx].querySelector('img');
+    lb.classList.add('open');
+    updateCount();
+    if(reduced){ lbImg.src = img.src; lbImg.style.opacity = 1; return; }
+    lbBusy = true;
+    lbImg.style.opacity = 0;
+    var clone = img.cloneNode();
+    clone.className = 'lb-clone';
+    setRect(clone, img.getBoundingClientRect());
+    document.body.appendChild(clone);
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){
+      setRect(clone, targetRect(img));
+    }); });
+    clone.addEventListener('transitionend', function(){
+      lbImg.src = img.src;
+      lbImg.style.opacity = 1;
+      setTimeout(function(){ clone.remove(); lbBusy = false; }, 80);
+    }, { once:true });
+  }
+  function closeLb(){
+    if(!lb.classList.contains('open') || lbBusy) return;
+    if(reduced || lbIndex < 0){ lb.classList.remove('open'); return; }
+    lbBusy = true;
+    var img = lbList[lbIndex] && lbList[lbIndex].querySelector('img');
+    var clone = lbImg.cloneNode();
+    clone.className = 'lb-clone';
+    setRect(clone, lbImg.getBoundingClientRect());
+    document.body.appendChild(clone);
+    lbImg.style.opacity = 0;
+    lb.classList.remove('open');
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){
+      if(img) setRect(clone, img.getBoundingClientRect());
+      clone.style.opacity = 0;
+    }); });
+    clone.addEventListener('transitionend', function(){
+      clone.remove(); lbBusy = false;
+    }, { once:true });
+  }
+  function stepLb(dir){
+    if(lbIndex < 0 || lbBusy || !lbList.length) return;
+    lbIndex = (lbIndex + dir + lbList.length) % lbList.length;
+    var img = lbList[lbIndex].querySelector('img');
+    updateCount();
+    if(reduced){ lbImg.src = img.src; return; }
+    lbImg.style.opacity = 0;
+    setTimeout(function(){ lbImg.src = img.src; lbImg.style.opacity = 1; }, 180);
+  }
+  shots.forEach(function(s){
+    s.addEventListener('click', function(){
+      if(s.classList.contains('is-empty')) return;
+      openLb(liveShots().indexOf(s));
+    });
+  });
+  document.getElementById('lbClose').addEventListener('click', closeLb);
+  document.getElementById('lbPrev').addEventListener('click', function(e){ e.stopPropagation(); stepLb(-1); });
+  document.getElementById('lbNext').addEventListener('click', function(e){ e.stopPropagation(); stepLb(1); });
+  lb.addEventListener('click', function(e){ if(e.target === lb) closeLb(); });
+  document.addEventListener('keydown', function(e){
+    if(!lb.classList.contains('open')) return;
+    if(e.key === 'Escape') closeLb();
+    if(e.key === 'ArrowLeft') stepLb(-1);
+    if(e.key === 'ArrowRight') stepLb(1);
+  });
+  var touchX = null;
+  lb.addEventListener('touchstart', function(e){ touchX = e.touches[0].clientX; }, { passive:true });
+  lb.addEventListener('touchend', function(e){
+    if(touchX === null) return;
+    var dx = e.changedTouches[0].clientX - touchX;
+    if(Math.abs(dx) > 45) stepLb(dx < 0 ? 1 : -1);
+    touchX = null;
+  }, { passive:true });
+
+  // Custom-Cursor über den Bildern (nur Desktop)
+  var cursor = document.getElementById('cursor');
+  if(cursor && window.matchMedia('(hover:hover) and (pointer:fine)').matches && !reduced){
+    var cx = 0, cy = 0, ctx = 0, cty = 0, cursorRaf = null;
+    function cursorLoop(){
+      cx += (ctx - cx) * .22; cy += (cty - cy) * .22;
+      cursor.style.left = cx + 'px'; cursor.style.top = cy + 'px';
+      cursorRaf = requestAnimationFrame(cursorLoop);
+    }
+    document.addEventListener('mousemove', function(e){
+      ctx = e.clientX; cty = e.clientY;
+      if(!cursorRaf){ cx = ctx; cy = cty; cursorLoop(); }
+    });
+    document.addEventListener('mouseover', function(e){
+      var s = e.target.closest ? e.target.closest('.shot') : null;
+      cursor.classList.toggle('on', !!(s && !s.classList.contains('is-empty')));
+    });
+  }
+
+  // Kontaktformular → Web3Forms
+  var form = document.getElementById('contactForm');
+  var cStatus = document.getElementById('cStatus');
+  if(form){
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var btn = form.querySelector('.cbtn');
+      cStatus.className = 'cstatus';
+      cStatus.textContent = 'Senden …';
+      btn.disabled = true;
+      fetch('https://api.web3forms.com/submit', {
+        method:'POST',
+        headers:{ 'Content-Type':'application/json', 'Accept':'application/json' },
+        body: JSON.stringify(Object.fromEntries(new FormData(form)))
+      }).then(function(res){ return res.json(); })
+      .then(function(data){
+        if(data.success){
+          cStatus.className = 'cstatus ok';
+          cStatus.textContent = 'Danke! Deine Nachricht ist unterwegs – ich melde mich.';
+          form.reset();
+        }else{
+          cStatus.className = 'cstatus err';
+          cStatus.textContent = 'Hm, das hat nicht geklappt. Versuch es bitte später noch einmal.';
+        }
+      }).catch(function(){
+        cStatus.className = 'cstatus err';
+        cStatus.textContent = 'Keine Verbindung – bitte später noch einmal versuchen.';
+      }).finally(function(){
+        btn.disabled = false;
+      });
+    });
+  }
+</script>
+</body>
+</html>
