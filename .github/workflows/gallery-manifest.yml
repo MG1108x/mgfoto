@@ -1,6 +1,7 @@
 # Aktualisiert automatisch das Bilder-Verzeichnis (images-manifest.json),
 # sobald Fotos im Ordner /images hinzukommen oder entfernt werden.
-# Muss nicht von Hand gestartet werden.
+# Kann zusätzlich von Hand gestartet werden: Tab "Actions" → diesen
+# Workflow wählen → "Run workflow".
 name: Galerie-Manifest aktualisieren
 
 on:
@@ -9,6 +10,12 @@ on:
       - 'images/**'
     branches:
       - main
+  workflow_dispatch:
+
+# Läuft immer nur einmal gleichzeitig; ein neuer Lauf ersetzt den alten.
+concurrency:
+  group: gallery-manifest
+  cancel-in-progress: true
 
 permissions:
   contents: write
@@ -30,7 +37,13 @@ jobs:
             git config user.email "github-actions[bot]@users.noreply.github.com"
             git add images-manifest.json
             git commit -m "Galerie-Manifest automatisch aktualisiert"
-            git push
+            # Neuesten Stand holen, eigenen Commit obendrauf setzen, dann pushen.
+            # Mehrere Versuche, falls parallel weitere Uploads laufen.
+            for i in 1 2 3 4 5; do
+              git pull --rebase origin main && git push && break
+              echo "Push-Versuch $i fehlgeschlagen, neuer Versuch..."
+              sleep 3
+            done
           else
             echo "Keine Änderung am Manifest."
           fi
