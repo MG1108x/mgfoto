@@ -1,0 +1,36 @@
+# Aktualisiert automatisch das Bilder-Verzeichnis (images-manifest.json),
+# sobald Fotos im Ordner /images hinzukommen oder entfernt werden.
+# Muss nicht von Hand gestartet werden.
+name: Galerie-Manifest aktualisieren
+
+on:
+  push:
+    paths:
+      - 'images/**'
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v4
+
+      - name: Manifest erzeugen
+        run: node scripts/build-manifest.js
+
+      - name: Änderungen committen (falls vorhanden)
+        run: |
+          if [ -n "$(git status --porcelain images-manifest.json)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add images-manifest.json
+            git commit -m "Galerie-Manifest automatisch aktualisiert"
+            git push
+          else
+            echo "Keine Änderung am Manifest."
+          fi
