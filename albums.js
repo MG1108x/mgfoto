@@ -42,6 +42,12 @@ window.MG_ALBUMS = [
     datum: "2026"
   },
   {
+    slug:  "kvod-3",
+    title: "Komm Vorbei Or Die 3",
+    ort:   "Ubstadt-Weiher",
+    datum: "2026"
+  },
+  {
     slug:  "",
     title: "Natur & Unterwegs",
     ort:   "",
