@@ -30,6 +30,12 @@
 
 window.MG_ALBUMS = [
   {
+    slug:  "kvod-3",
+    title: "Komm Vorbei Or Die 3",
+    ort:   "Ubstadt-Weiher",
+    datum: "2026"
+  },
+  {
     slug:  "unifest-2026",
     title: "KIT Unifest 2026",
     ort:   "Karlsruhe",
@@ -39,12 +45,6 @@ window.MG_ALBUMS = [
     slug:  "house-am-see-2026",
     title: "House Am See 2026",
     ort:   "Heidesee Forst",
-    datum: "2026"
-  },
-  {
-    slug:  "kvod-3",
-    title: "Komm Vorbei Or Die 3",
-    ort:   "Ubstadt-Weiher",
     datum: "2026"
   },
   {
