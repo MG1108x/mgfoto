@@ -29,5 +29,6 @@ for slug, files in manifest.items():
                 optimized_bytes += target.stat().st_size
                 variants[key][label] = target.relative_to(root).as_posix()
             variants[key]['width'], variants[key]['height'] = image.size
+(root / 'assets/js').mkdir(parents=True, exist_ok=True)
 (root / 'assets/js/image-variants.js').write_text('window.MG_IMAGE_VARIANTS = ' + json.dumps(variants, ensure_ascii=False, indent=2) + ';\n')
 print(f'{len(variants)} photographs: {original_bytes / 1e6:.1f} MB originals, {optimized_bytes / 1e6:.1f} MB web copies (both sizes).')
