@@ -1,45 +1,37 @@
-/*
-  Erzeugt images-manifest.json — ein Verzeichnis aller Fotos je Ordner.
-  Läuft automatisch per GitHub Action bei jedem Upload in /images.
-  Muss nicht von Hand gestartet werden.
-*/
+/* Build gallery index. On GitHub Actions, also prepare and stage web copies.
+   The existing workflow commits these together with images-manifest.json.
+   Locally this script only writes the manifest; it does not stage files. */
 const fs = require('fs');
 const path = require('path');
-
+const crypto = require('crypto');
+const os = require('os');
+const {execFileSync} = require('child_process');
 const IMAGES_DIR = 'images';
-const OUT = 'images-manifest.json';
 const EXT = /\.(jpe?g|png|webp|avif)$/i;
-// Dateien, die keine Galeriefotos sind:
 const IGNORE = /^(og-image|favicon|apple-touch-icon|icon-\d+|logo)/i;
-
-function naturalSort(a, b){
-  return a.localeCompare(b, undefined, { numeric:true, sensitivity:'base' });
-}
-
+const naturalSort = (a,b) => a.localeCompare(b,'en',{numeric:true,sensitivity:'base'});
 function listImages(dir){
-  let entries;
-  try { entries = fs.readdirSync(dir, { withFileTypes:true }); }
-  catch(e){ return []; }
-  return entries
-    .filter(e => e.isFile() && EXT.test(e.name) && !IGNORE.test(e.name))
-    .map(e => e.name)
-    .sort(naturalSort);
+  return fs.readdirSync(dir,{withFileTypes:true}).filter(entry=>entry.isFile() && EXT.test(entry.name) && !IGNORE.test(entry.name)).map(entry=>entry.name).sort(naturalSort);
 }
-
-const manifest = {};
-
-// Wurzelordner (Album mit slug "")
-manifest[''] = listImages(IMAGES_DIR);
-
-// Jeder Unterordner = ein Album (slug = Ordnername)
-for (const e of fs.readdirSync(IMAGES_DIR, { withFileTypes:true })){
-  if (e.isDirectory()){
-    manifest[e.name] = listImages(path.join(IMAGES_DIR, e.name));
-  }
+const manifest = {'':listImages(IMAGES_DIR)};
+for(const entry of fs.readdirSync(IMAGES_DIR,{withFileTypes:true}).sort((a,b)=>naturalSort(a.name,b.name))){
+  if(entry.isDirectory() && !entry.name.startsWith('.')) manifest[entry.name]=listImages(path.join(IMAGES_DIR,entry.name));
 }
-
-fs.writeFileSync(OUT, JSON.stringify(manifest, null, 2) + '\n');
-console.log('images-manifest.json geschrieben:');
-for (const k of Object.keys(manifest)){
-  console.log('  ' + (k || '(Wurzel)') + ': ' + manifest[k].length + ' Bilder');
+// This revision makes a same-name replacement trigger the existing commit step.
+const revision = crypto.createHash('sha256');
+for(const [slug,files] of Object.entries(manifest)) for(const name of files){
+  const filename=path.join(IMAGES_DIR,slug,name);revision.update(filename+'\0');revision.update(fs.readFileSync(filename));
+}
+manifest.__meta={sourceHash:revision.digest('hex'),webVersion:1};
+fs.writeFileSync('images-manifest.json',JSON.stringify(manifest,null,2)+'\n');
+for(const [slug,files] of Object.entries(manifest)) if(Array.isArray(files)) console.log((slug || '(root)')+': '+files.length+' photos');
+if(process.env.GITHUB_ACTIONS==='true'){
+  const venv=fs.mkdtempSync(path.join(os.tmpdir(),'mgfoto-images-'));
+  try{
+    execFileSync('python3',['-m','venv',venv],{stdio:'inherit'});
+    const python=path.join(venv,'bin','python');
+    execFileSync(python,['-m','pip','install','--disable-pip-version-check','Pillow==11.3.0'],{stdio:'inherit'});
+    execFileSync(python,['scripts/optimize-images.py'],{stdio:'inherit'});
+    execFileSync('git',['add','assets/photos','assets/js/image-variants.js'],{stdio:'inherit'});
+  }finally{fs.rmSync(venv,{recursive:true,force:true});}
 }
