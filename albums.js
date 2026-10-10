@@ -35,7 +35,7 @@ window.MG_ALBUMS = [
     ort:   "Ubstadt-Weiher",
     datum: "2026",
     category: "events",
-    cover: "DSC_6239-Edit.jpeg"
+    cover: "DSC_7288.jpeg"
   },
   {
     slug:  "unifest-2026",
