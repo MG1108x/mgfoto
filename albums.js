@@ -33,24 +33,32 @@ window.MG_ALBUMS = [
     slug:  "kvod-3",
     title: "Komm Vorbei Or Die 3",
     ort:   "Ubstadt-Weiher",
-    datum: "2026"
+    datum: "2026",
+    category: "events",
+    cover: "DSC_6239-Edit.jpeg"
   },
   {
     slug:  "unifest-2026",
     title: "KIT Unifest 2026",
     ort:   "Karlsruhe",
-    datum: "2026"
+    datum: "2026",
+    category: "events",
+    cover: "09.jpg"
   },
   {
     slug:  "house-am-see-2026",
     title: "House Am See 2026",
     ort:   "Heidesee Forst",
-    datum: "2026"
+    datum: "2026",
+    category: "events",
+    cover: "DSC_5639.jpg"
   },
   {
     slug:  "",
     title: "Natur & Unterwegs",
     ort:   "",
-    datum: ""
+    datum: "",
+    category: "personal",
+    cover: "12.JPG"
   }
 ];
