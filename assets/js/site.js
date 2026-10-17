@@ -1,4 +1,4 @@
-/* MG FOTO MEDIA: static site, no tracking and no third-party scripts. */
+/* MG FOTO: static site, no tracking and no third-party scripts. */
 'use strict';
 document.documentElement.classList.add('js');
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');

@@ -1,4 +1,4 @@
-# MG FOTO MEDIA
+# MG FOTO
 
 Fotografie von Marvin Grammel aus Karlsruhe. Schwerpunkt Events, Konzerte und Festivals; offen für Shootings, Hochzeiten und andere Projekte.
 
