@@ -29,6 +29,14 @@
    ══════════════════════════════════════════════════════════════════ */
 
 window.MG_ALBUMS = [
+   {
+    slug:  "dj-conference-2026",
+    title: "DJ Conference 2026,
+    ort:   "Karlstorbahnhof, Heidelberg",
+    datum: "2026",
+    category: "events",
+    cover: "dj-conference-29.jpg"
+  }
   {
     slug:  "kvod-3",
     title: "Komm Vorbei Or Die 3",
