@@ -29,6 +29,192 @@ window.MG_IMAGE_VARIANTS = {
     "width": 1365,
     "height": 2048
   },
+  "images/dj-conference-2026/dj-conference-01.jpg": {
+    "small": "assets/photos/dj-conference-2026/dj-conference-01.jpg.small.webp",
+    "large": "assets/photos/dj-conference-2026/dj-conference-01.jpg.large.webp",
+    "width": 1365,
+    "height": 2048
+  },
+  "images/dj-conference-2026/dj-conference-02.jpg": {
+    "small": "assets/photos/dj-conference-2026/dj-conference-02.jpg.small.webp",
+    "large": "assets/photos/dj-conference-2026/dj-conference-02.jpg.large.webp",
+    "width": 1365,
+    "height": 2048
+  },
+  "images/dj-conference-2026/dj-conference-03.jpg": {
+    "small": "assets/photos/dj-conference-2026/dj-conference-03.jpg.small.webp",
+    "large": "assets/photos/dj-conference-2026/dj-conference-03.jpg.large.webp",
+    "width": 1365,
+    "height": 2048
+  },
+  "images/dj-conference-2026/dj-conference-04.jpg": {
+    "small": "assets/photos/dj-conference-2026/dj-conference-04.jpg.small.webp",
+    "large": "assets/photos/dj-conference-2026/dj-conference-04.jpg.large.webp",
+    "width": 1365,
+    "height": 2048
+  },
+  "images/dj-conference-2026/dj-conference-05.jpg": {
+    "small": "assets/photos/dj-conference-2026/dj-conference-05.jpg.small.webp",
+    "large": "assets/photos/dj-conference-2026/dj-conference-05.jpg.large.webp",
+    "width": 1365,
+    "height": 2048
+  },
+  "images/dj-conference-2026/dj-conference-06.jpg": {
+    "small": "assets/photos/dj-conference-2026/dj-conference-06.jpg.small.webp",
+    "large": "assets/photos/dj-conference-2026/dj-conference-06.jpg.large.webp",
+    "width": 1365,
+    "height": 2048
+  },
+  "images/dj-conference-2026/dj-conference-07.jpg": {
+    "small": "assets/photos/dj-conference-2026/dj-conference-07.jpg.small.webp",
+    "large": "assets/photos/dj-conference-2026/dj-conference-07.jpg.large.webp",
+    "width": 1365,
+    "height": 2048
+  },
+  "images/dj-conference-2026/dj-conference-08.jpg": {
+    "small": "assets/photos/dj-conference-2026/dj-conference-08.jpg.small.webp",
+    "large": "assets/photos/dj-conference-2026/dj-conference-08.jpg.large.webp",
+    "width": 1365,
+    "height": 2048
+  },
+  "images/dj-conference-2026/dj-conference-09.jpg": {
+    "small": "assets/photos/dj-conference-2026/dj-conference-09.jpg.small.webp",
+    "large": "assets/photos/dj-conference-2026/dj-conference-09.jpg.large.webp",
+    "width": 2048,
+    "height": 1365
+  },
+  "images/dj-conference-2026/dj-conference-10.jpg": {
+    "small": "assets/photos/dj-conference-2026/dj-conference-10.jpg.small.webp",
+    "large": "assets/photos/dj-conference-2026/dj-conference-10.jpg.large.webp",
+    "width": 1365,
+    "height": 2048
+  },
+  "images/dj-conference-2026/dj-conference-11.jpg": {
+    "small": "assets/photos/dj-conference-2026/dj-conference-11.jpg.small.webp",
+    "large": "assets/photos/dj-conference-2026/dj-conference-11.jpg.large.webp",
+    "width": 1365,
+    "height": 2048
+  },
+  "images/dj-conference-2026/dj-conference-12.jpg": {
+    "small": "assets/photos/dj-conference-2026/dj-conference-12.jpg.small.webp",
+    "large": "assets/photos/dj-conference-2026/dj-conference-12.jpg.large.webp",
+    "width": 1365,
+    "height": 2048
+  },
+  "images/dj-conference-2026/dj-conference-13.jpg": {
+    "small": "assets/photos/dj-conference-2026/dj-conference-13.jpg.small.webp",
+    "large": "assets/photos/dj-conference-2026/dj-conference-13.jpg.large.webp",
+    "width": 1365,
+    "height": 2048
+  },
+  "images/dj-conference-2026/dj-conference-14.jpg": {
+    "small": "assets/photos/dj-conference-2026/dj-conference-14.jpg.small.webp",
+    "large": "assets/photos/dj-conference-2026/dj-conference-14.jpg.large.webp",
+    "width": 2048,
+    "height": 1365
+  },
+  "images/dj-conference-2026/dj-conference-15.jpg": {
+    "small": "assets/photos/dj-conference-2026/dj-conference-15.jpg.small.webp",
+    "large": "assets/photos/dj-conference-2026/dj-conference-15.jpg.large.webp",
+    "width": 2048,
+    "height": 1365
+  },
+  "images/dj-conference-2026/dj-conference-16.jpg": {
+    "small": "assets/photos/dj-conference-2026/dj-conference-16.jpg.small.webp",
+    "large": "assets/photos/dj-conference-2026/dj-conference-16.jpg.large.webp",
+    "width": 1365,
+    "height": 2048
+  },
+  "images/dj-conference-2026/dj-conference-17.jpg": {
+    "small": "assets/photos/dj-conference-2026/dj-conference-17.jpg.small.webp",
+    "large": "assets/photos/dj-conference-2026/dj-conference-17.jpg.large.webp",
+    "width": 1365,
+    "height": 2048
+  },
+  "images/dj-conference-2026/dj-conference-18.jpg": {
+    "small": "assets/photos/dj-conference-2026/dj-conference-18.jpg.small.webp",
+    "large": "assets/photos/dj-conference-2026/dj-conference-18.jpg.large.webp",
+    "width": 1365,
+    "height": 2048
+  },
+  "images/dj-conference-2026/dj-conference-19.jpg": {
+    "small": "assets/photos/dj-conference-2026/dj-conference-19.jpg.small.webp",
+    "large": "assets/photos/dj-conference-2026/dj-conference-19.jpg.large.webp",
+    "width": 1365,
+    "height": 2048
+  },
+  "images/dj-conference-2026/dj-conference-20.jpg": {
+    "small": "assets/photos/dj-conference-2026/dj-conference-20.jpg.small.webp",
+    "large": "assets/photos/dj-conference-2026/dj-conference-20.jpg.large.webp",
+    "width": 1365,
+    "height": 2048
+  },
+  "images/dj-conference-2026/dj-conference-21.jpg": {
+    "small": "assets/photos/dj-conference-2026/dj-conference-21.jpg.small.webp",
+    "large": "assets/photos/dj-conference-2026/dj-conference-21.jpg.large.webp",
+    "width": 1365,
+    "height": 2048
+  },
+  "images/dj-conference-2026/dj-conference-22.jpg": {
+    "small": "assets/photos/dj-conference-2026/dj-conference-22.jpg.small.webp",
+    "large": "assets/photos/dj-conference-2026/dj-conference-22.jpg.large.webp",
+    "width": 2048,
+    "height": 1365
+  },
+  "images/dj-conference-2026/dj-conference-23.jpg": {
+    "small": "assets/photos/dj-conference-2026/dj-conference-23.jpg.small.webp",
+    "large": "assets/photos/dj-conference-2026/dj-conference-23.jpg.large.webp",
+    "width": 2048,
+    "height": 1365
+  },
+  "images/dj-conference-2026/dj-conference-24.jpg": {
+    "small": "assets/photos/dj-conference-2026/dj-conference-24.jpg.small.webp",
+    "large": "assets/photos/dj-conference-2026/dj-conference-24.jpg.large.webp",
+    "width": 2048,
+    "height": 1365
+  },
+  "images/dj-conference-2026/dj-conference-25.jpg": {
+    "small": "assets/photos/dj-conference-2026/dj-conference-25.jpg.small.webp",
+    "large": "assets/photos/dj-conference-2026/dj-conference-25.jpg.large.webp",
+    "width": 2048,
+    "height": 1366
+  },
+  "images/dj-conference-2026/dj-conference-26.jpg": {
+    "small": "assets/photos/dj-conference-2026/dj-conference-26.jpg.small.webp",
+    "large": "assets/photos/dj-conference-2026/dj-conference-26.jpg.large.webp",
+    "width": 2048,
+    "height": 1365
+  },
+  "images/dj-conference-2026/dj-conference-27.jpg": {
+    "small": "assets/photos/dj-conference-2026/dj-conference-27.jpg.small.webp",
+    "large": "assets/photos/dj-conference-2026/dj-conference-27.jpg.large.webp",
+    "width": 2048,
+    "height": 1366
+  },
+  "images/dj-conference-2026/dj-conference-28.jpg": {
+    "small": "assets/photos/dj-conference-2026/dj-conference-28.jpg.small.webp",
+    "large": "assets/photos/dj-conference-2026/dj-conference-28.jpg.large.webp",
+    "width": 1365,
+    "height": 2048
+  },
+  "images/dj-conference-2026/dj-conference-29.jpg": {
+    "small": "assets/photos/dj-conference-2026/dj-conference-29.jpg.small.webp",
+    "large": "assets/photos/dj-conference-2026/dj-conference-29.jpg.large.webp",
+    "width": 1365,
+    "height": 2048
+  },
+  "images/dj-conference-2026/dj-conference-30.jpg": {
+    "small": "assets/photos/dj-conference-2026/dj-conference-30.jpg.small.webp",
+    "large": "assets/photos/dj-conference-2026/dj-conference-30.jpg.large.webp",
+    "width": 1365,
+    "height": 2048
+  },
+  "images/dj-conference-2026/dj-conference-31.jpg": {
+    "small": "assets/photos/dj-conference-2026/dj-conference-31.jpg.small.webp",
+    "large": "assets/photos/dj-conference-2026/dj-conference-31.jpg.large.webp",
+    "width": 2048,
+    "height": 1365
+  },
   "images/house-am-see-2026/DSC_4363.jpg": {
     "small": "assets/photos/house-am-see-2026/DSC_4363.jpg.small.webp",
     "large": "assets/photos/house-am-see-2026/DSC_4363.jpg.large.webp",
