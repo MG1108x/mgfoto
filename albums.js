@@ -52,7 +52,7 @@ window.MG_ALBUMS = [
   {
     slug:  "house-am-see-2026",
     title: "House Am See 2026",
-    ort:   "Heidesee Forst",
+    ort:   "Heidesee, Forst",
     datum: "2026",
     cover: "DSC_5639.jpg"
   }
