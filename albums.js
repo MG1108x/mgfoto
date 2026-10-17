@@ -33,15 +33,13 @@ window.MG_ALBUMS = [
     title: "DJ Conference 2026",
     ort:   "Karlstorbahnhof, Heidelberg",
     datum: "2026",
-    category: "events",
-    cover: "dj-conference-29.jpg"
+    cover: "dj-conference-22.jpg"
   },
   {
     slug:  "kvod-3",
     title: "Komm Vorbei Or Die 3",
     ort:   "Ubstadt-Weiher",
     datum: "2026",
-    category: "events",
     cover: "DSC_7288.jpeg"
   },
   {
@@ -49,7 +47,6 @@ window.MG_ALBUMS = [
     title: "KIT Unifest 2026",
     ort:   "Karlsruhe",
     datum: "2026",
-    category: "events",
     cover: "09.jpg"
   },
   {
@@ -57,7 +54,6 @@ window.MG_ALBUMS = [
     title: "House Am See 2026",
     ort:   "Heidesee Forst",
     datum: "2026",
-    category: "events",
     cover: "DSC_5639.jpg"
   }
 ];

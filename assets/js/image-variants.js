@@ -5,53 +5,11 @@ window.MG_IMAGE_VARIANTS = {
     "width": 1365,
     "height": 2048
   },
-  "images/dj-conference-2026/dj-conference-02.jpg": {
-    "small": "assets/photos/dj-conference-2026/dj-conference-02.jpg.small.webp",
-    "large": "assets/photos/dj-conference-2026/dj-conference-02.jpg.large.webp",
-    "width": 1365,
-    "height": 2048
-  },
-  "images/dj-conference-2026/dj-conference-03.jpg": {
-    "small": "assets/photos/dj-conference-2026/dj-conference-03.jpg.small.webp",
-    "large": "assets/photos/dj-conference-2026/dj-conference-03.jpg.large.webp",
-    "width": 1365,
-    "height": 2048
-  },
-  "images/dj-conference-2026/dj-conference-04.jpg": {
-    "small": "assets/photos/dj-conference-2026/dj-conference-04.jpg.small.webp",
-    "large": "assets/photos/dj-conference-2026/dj-conference-04.jpg.large.webp",
-    "width": 1365,
-    "height": 2048
-  },
-  "images/dj-conference-2026/dj-conference-05.jpg": {
-    "small": "assets/photos/dj-conference-2026/dj-conference-05.jpg.small.webp",
-    "large": "assets/photos/dj-conference-2026/dj-conference-05.jpg.large.webp",
-    "width": 1365,
-    "height": 2048
-  },
-  "images/dj-conference-2026/dj-conference-06.jpg": {
-    "small": "assets/photos/dj-conference-2026/dj-conference-06.jpg.small.webp",
-    "large": "assets/photos/dj-conference-2026/dj-conference-06.jpg.large.webp",
-    "width": 1365,
-    "height": 2048
-  },
-  "images/dj-conference-2026/dj-conference-07.jpg": {
-    "small": "assets/photos/dj-conference-2026/dj-conference-07.jpg.small.webp",
-    "large": "assets/photos/dj-conference-2026/dj-conference-07.jpg.large.webp",
-    "width": 1365,
-    "height": 2048
-  },
   "images/dj-conference-2026/dj-conference-08.jpg": {
     "small": "assets/photos/dj-conference-2026/dj-conference-08.jpg.small.webp",
     "large": "assets/photos/dj-conference-2026/dj-conference-08.jpg.large.webp",
     "width": 1365,
     "height": 2048
-  },
-  "images/dj-conference-2026/dj-conference-09.jpg": {
-    "small": "assets/photos/dj-conference-2026/dj-conference-09.jpg.small.webp",
-    "large": "assets/photos/dj-conference-2026/dj-conference-09.jpg.large.webp",
-    "width": 2048,
-    "height": 1365
   },
   "images/dj-conference-2026/dj-conference-10.jpg": {
     "small": "assets/photos/dj-conference-2026/dj-conference-10.jpg.small.webp",
@@ -77,33 +35,9 @@ window.MG_IMAGE_VARIANTS = {
     "width": 1365,
     "height": 2048
   },
-  "images/dj-conference-2026/dj-conference-14.jpg": {
-    "small": "assets/photos/dj-conference-2026/dj-conference-14.jpg.small.webp",
-    "large": "assets/photos/dj-conference-2026/dj-conference-14.jpg.large.webp",
-    "width": 2048,
-    "height": 1365
-  },
-  "images/dj-conference-2026/dj-conference-15.jpg": {
-    "small": "assets/photos/dj-conference-2026/dj-conference-15.jpg.small.webp",
-    "large": "assets/photos/dj-conference-2026/dj-conference-15.jpg.large.webp",
-    "width": 2048,
-    "height": 1365
-  },
   "images/dj-conference-2026/dj-conference-16.jpg": {
     "small": "assets/photos/dj-conference-2026/dj-conference-16.jpg.small.webp",
     "large": "assets/photos/dj-conference-2026/dj-conference-16.jpg.large.webp",
-    "width": 1365,
-    "height": 2048
-  },
-  "images/dj-conference-2026/dj-conference-17.jpg": {
-    "small": "assets/photos/dj-conference-2026/dj-conference-17.jpg.small.webp",
-    "large": "assets/photos/dj-conference-2026/dj-conference-17.jpg.large.webp",
-    "width": 1365,
-    "height": 2048
-  },
-  "images/dj-conference-2026/dj-conference-18.jpg": {
-    "small": "assets/photos/dj-conference-2026/dj-conference-18.jpg.small.webp",
-    "large": "assets/photos/dj-conference-2026/dj-conference-18.jpg.large.webp",
     "width": 1365,
     "height": 2048
   },
@@ -119,45 +53,15 @@ window.MG_IMAGE_VARIANTS = {
     "width": 1365,
     "height": 2048
   },
-  "images/dj-conference-2026/dj-conference-21.jpg": {
-    "small": "assets/photos/dj-conference-2026/dj-conference-21.jpg.small.webp",
-    "large": "assets/photos/dj-conference-2026/dj-conference-21.jpg.large.webp",
-    "width": 1365,
-    "height": 2048
-  },
   "images/dj-conference-2026/dj-conference-22.jpg": {
     "small": "assets/photos/dj-conference-2026/dj-conference-22.jpg.small.webp",
     "large": "assets/photos/dj-conference-2026/dj-conference-22.jpg.large.webp",
     "width": 2048,
     "height": 1365
   },
-  "images/dj-conference-2026/dj-conference-23.jpg": {
-    "small": "assets/photos/dj-conference-2026/dj-conference-23.jpg.small.webp",
-    "large": "assets/photos/dj-conference-2026/dj-conference-23.jpg.large.webp",
-    "width": 2048,
-    "height": 1365
-  },
-  "images/dj-conference-2026/dj-conference-24.jpg": {
-    "small": "assets/photos/dj-conference-2026/dj-conference-24.jpg.small.webp",
-    "large": "assets/photos/dj-conference-2026/dj-conference-24.jpg.large.webp",
-    "width": 2048,
-    "height": 1365
-  },
   "images/dj-conference-2026/dj-conference-25.jpg": {
     "small": "assets/photos/dj-conference-2026/dj-conference-25.jpg.small.webp",
     "large": "assets/photos/dj-conference-2026/dj-conference-25.jpg.large.webp",
-    "width": 2048,
-    "height": 1366
-  },
-  "images/dj-conference-2026/dj-conference-26.jpg": {
-    "small": "assets/photos/dj-conference-2026/dj-conference-26.jpg.small.webp",
-    "large": "assets/photos/dj-conference-2026/dj-conference-26.jpg.large.webp",
-    "width": 2048,
-    "height": 1365
-  },
-  "images/dj-conference-2026/dj-conference-27.jpg": {
-    "small": "assets/photos/dj-conference-2026/dj-conference-27.jpg.small.webp",
-    "large": "assets/photos/dj-conference-2026/dj-conference-27.jpg.large.webp",
     "width": 2048,
     "height": 1366
   },
@@ -173,12 +77,6 @@ window.MG_IMAGE_VARIANTS = {
     "width": 1365,
     "height": 2048
   },
-  "images/dj-conference-2026/dj-conference-30.jpg": {
-    "small": "assets/photos/dj-conference-2026/dj-conference-30.jpg.small.webp",
-    "large": "assets/photos/dj-conference-2026/dj-conference-30.jpg.large.webp",
-    "width": 1365,
-    "height": 2048
-  },
   "images/dj-conference-2026/dj-conference-31.jpg": {
     "small": "assets/photos/dj-conference-2026/dj-conference-31.jpg.small.webp",
     "large": "assets/photos/dj-conference-2026/dj-conference-31.jpg.large.webp",
@@ -190,24 +88,6 @@ window.MG_IMAGE_VARIANTS = {
     "large": "assets/photos/house-am-see-2026/DSC_4363.jpg.large.webp",
     "width": 4032,
     "height": 6048
-  },
-  "images/house-am-see-2026/DSC_4432.jpg": {
-    "small": "assets/photos/house-am-see-2026/DSC_4432.jpg.small.webp",
-    "large": "assets/photos/house-am-see-2026/DSC_4432.jpg.large.webp",
-    "width": 6048,
-    "height": 4032
-  },
-  "images/house-am-see-2026/DSC_4438.jpg": {
-    "small": "assets/photos/house-am-see-2026/DSC_4438.jpg.small.webp",
-    "large": "assets/photos/house-am-see-2026/DSC_4438.jpg.large.webp",
-    "width": 3531,
-    "height": 5296
-  },
-  "images/house-am-see-2026/DSC_4504.jpg": {
-    "small": "assets/photos/house-am-see-2026/DSC_4504.jpg.small.webp",
-    "large": "assets/photos/house-am-see-2026/DSC_4504.jpg.large.webp",
-    "width": 5737,
-    "height": 3825
   },
   "images/house-am-see-2026/DSC_4607.jpg": {
     "small": "assets/photos/house-am-see-2026/DSC_4607.jpg.small.webp",
@@ -221,23 +101,11 @@ window.MG_IMAGE_VARIANTS = {
     "width": 6048,
     "height": 4032
   },
-  "images/house-am-see-2026/DSC_4768.jpg": {
-    "small": "assets/photos/house-am-see-2026/DSC_4768.jpg.small.webp",
-    "large": "assets/photos/house-am-see-2026/DSC_4768.jpg.large.webp",
-    "width": 4032,
-    "height": 6048
-  },
   "images/house-am-see-2026/DSC_4902.jpg": {
     "small": "assets/photos/house-am-see-2026/DSC_4902.jpg.small.webp",
     "large": "assets/photos/house-am-see-2026/DSC_4902.jpg.large.webp",
     "width": 4032,
     "height": 6048
-  },
-  "images/house-am-see-2026/DSC_5166.jpg": {
-    "small": "assets/photos/house-am-see-2026/DSC_5166.jpg.small.webp",
-    "large": "assets/photos/house-am-see-2026/DSC_5166.jpg.large.webp",
-    "width": 6048,
-    "height": 4032
   },
   "images/house-am-see-2026/DSC_5192.jpg": {
     "small": "assets/photos/house-am-see-2026/DSC_5192.jpg.small.webp",
@@ -250,18 +118,6 @@ window.MG_IMAGE_VARIANTS = {
     "large": "assets/photos/house-am-see-2026/DSC_5272.jpg.large.webp",
     "width": 4032,
     "height": 6048
-  },
-  "images/house-am-see-2026/DSC_5279.jpg": {
-    "small": "assets/photos/house-am-see-2026/DSC_5279.jpg.small.webp",
-    "large": "assets/photos/house-am-see-2026/DSC_5279.jpg.large.webp",
-    "width": 6048,
-    "height": 4032
-  },
-  "images/house-am-see-2026/DSC_5320.jpg": {
-    "small": "assets/photos/house-am-see-2026/DSC_5320.jpg.small.webp",
-    "large": "assets/photos/house-am-see-2026/DSC_5320.jpg.large.webp",
-    "width": 6048,
-    "height": 4032
   },
   "images/house-am-see-2026/DSC_5563.jpg": {
     "small": "assets/photos/house-am-see-2026/DSC_5563.jpg.small.webp",
@@ -293,18 +149,6 @@ window.MG_IMAGE_VARIANTS = {
     "width": 6048,
     "height": 4032
   },
-  "images/kvod-3/DSC_5775.jpeg": {
-    "small": "assets/photos/kvod-3/DSC_5775.jpeg.small.webp",
-    "large": "assets/photos/kvod-3/DSC_5775.jpeg.large.webp",
-    "width": 1280,
-    "height": 853
-  },
-  "images/kvod-3/DSC_5785.jpeg": {
-    "small": "assets/photos/kvod-3/DSC_5785.jpeg.small.webp",
-    "large": "assets/photos/kvod-3/DSC_5785.jpeg.large.webp",
-    "width": 853,
-    "height": 1280
-  },
   "images/kvod-3/DSC_5790.jpeg": {
     "small": "assets/photos/kvod-3/DSC_5790.jpeg.small.webp",
     "large": "assets/photos/kvod-3/DSC_5790.jpeg.large.webp",
@@ -320,24 +164,6 @@ window.MG_IMAGE_VARIANTS = {
   "images/kvod-3/DSC_5840.jpeg": {
     "small": "assets/photos/kvod-3/DSC_5840.jpeg.small.webp",
     "large": "assets/photos/kvod-3/DSC_5840.jpeg.large.webp",
-    "width": 853,
-    "height": 1280
-  },
-  "images/kvod-3/DSC_5877.jpeg": {
-    "small": "assets/photos/kvod-3/DSC_5877.jpeg.small.webp",
-    "large": "assets/photos/kvod-3/DSC_5877.jpeg.large.webp",
-    "width": 1280,
-    "height": 853
-  },
-  "images/kvod-3/DSC_5931 Kopie.jpeg": {
-    "small": "assets/photos/kvod-3/DSC_5931 Kopie.jpeg.small.webp",
-    "large": "assets/photos/kvod-3/DSC_5931 Kopie.jpeg.large.webp",
-    "width": 853,
-    "height": 1280
-  },
-  "images/kvod-3/DSC_5992.jpeg": {
-    "small": "assets/photos/kvod-3/DSC_5992.jpeg.small.webp",
-    "large": "assets/photos/kvod-3/DSC_5992.jpeg.large.webp",
     "width": 853,
     "height": 1280
   },
@@ -359,12 +185,6 @@ window.MG_IMAGE_VARIANTS = {
     "width": 853,
     "height": 1280
   },
-  "images/kvod-3/DSC_6409.jpeg": {
-    "small": "assets/photos/kvod-3/DSC_6409.jpeg.small.webp",
-    "large": "assets/photos/kvod-3/DSC_6409.jpeg.large.webp",
-    "width": 853,
-    "height": 1280
-  },
   "images/kvod-3/DSC_6490.jpeg": {
     "small": "assets/photos/kvod-3/DSC_6490.jpeg.small.webp",
     "large": "assets/photos/kvod-3/DSC_6490.jpeg.large.webp",
@@ -380,12 +200,6 @@ window.MG_IMAGE_VARIANTS = {
   "images/kvod-3/DSC_6824.jpeg": {
     "small": "assets/photos/kvod-3/DSC_6824.jpeg.small.webp",
     "large": "assets/photos/kvod-3/DSC_6824.jpeg.large.webp",
-    "width": 853,
-    "height": 1280
-  },
-  "images/kvod-3/DSC_6895.jpeg": {
-    "small": "assets/photos/kvod-3/DSC_6895.jpeg.small.webp",
-    "large": "assets/photos/kvod-3/DSC_6895.jpeg.large.webp",
     "width": 853,
     "height": 1280
   },
@@ -413,23 +227,11 @@ window.MG_IMAGE_VARIANTS = {
     "width": 1365,
     "height": 2048
   },
-  "images/unifest-2026/02.jpg": {
-    "small": "assets/photos/unifest-2026/02.jpg.small.webp",
-    "large": "assets/photos/unifest-2026/02.jpg.large.webp",
-    "width": 2048,
-    "height": 1365
-  },
   "images/unifest-2026/03.jpg": {
     "small": "assets/photos/unifest-2026/03.jpg.small.webp",
     "large": "assets/photos/unifest-2026/03.jpg.large.webp",
     "width": 2048,
     "height": 1365
-  },
-  "images/unifest-2026/04.jpg": {
-    "small": "assets/photos/unifest-2026/04.jpg.small.webp",
-    "large": "assets/photos/unifest-2026/04.jpg.large.webp",
-    "width": 1365,
-    "height": 2048
   },
   "images/unifest-2026/05.jpg": {
     "small": "assets/photos/unifest-2026/05.jpg.small.webp",
@@ -449,12 +251,6 @@ window.MG_IMAGE_VARIANTS = {
     "width": 1365,
     "height": 2048
   },
-  "images/unifest-2026/08.jpg": {
-    "small": "assets/photos/unifest-2026/08.jpg.small.webp",
-    "large": "assets/photos/unifest-2026/08.jpg.large.webp",
-    "width": 2048,
-    "height": 1365
-  },
   "images/unifest-2026/09.jpg": {
     "small": "assets/photos/unifest-2026/09.jpg.small.webp",
     "large": "assets/photos/unifest-2026/09.jpg.large.webp",
@@ -466,12 +262,6 @@ window.MG_IMAGE_VARIANTS = {
     "large": "assets/photos/unifest-2026/DSC_1495-Edit-Edit.jpg.large.webp",
     "width": 1365,
     "height": 2048
-  },
-  "images/unifest-2026/DSC_2389.jpg": {
-    "small": "assets/photos/unifest-2026/DSC_2389.jpg.small.webp",
-    "large": "assets/photos/unifest-2026/DSC_2389.jpg.large.webp",
-    "width": 2048,
-    "height": 1365
   },
   "images/unifest-2026/DSC_3220.jpg": {
     "small": "assets/photos/unifest-2026/DSC_3220.jpg.small.webp",

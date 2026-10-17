@@ -8,6 +8,9 @@ on:
   push:
     paths:
       - 'images/**'
+      - 'albums.js'
+      - 'scripts/build-manifest.js'
+      - 'scripts/optimize-images.py'
     branches:
       - main
   workflow_dispatch:
@@ -27,23 +30,33 @@ jobs:
       - name: Repository auschecken
         uses: actions/checkout@v4
 
+      - name: JavaScript prüfen
+        run: |
+          node --check albums.js
+          node --check assets/js/site.js
+          node --check scripts/build-manifest.js
+
       - name: Manifest erzeugen
         run: node scripts/build-manifest.js
 
       - name: Änderungen committen (falls vorhanden)
         run: |
-          if [ -n "$(git status --porcelain images-manifest.json)" ]; then
+          git add images-manifest.json index.html assets/photos assets/js/image-variants.js
+          if ! git diff --cached --quiet; then
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add images-manifest.json
             git commit -m "Galerie-Manifest automatisch aktualisiert"
             # Neuesten Stand holen, eigenen Commit obendrauf setzen, dann pushen.
             # Mehrere Versuche, falls parallel weitere Uploads laufen.
             for i in 1 2 3 4 5; do
-              git pull --rebase origin main && git push && break
+              if git pull --rebase origin main && git push; then
+                exit 0
+              fi
               echo "Push-Versuch $i fehlgeschlagen, neuer Versuch..."
               sleep 3
             done
+            echo "Änderungen konnten nicht veröffentlicht werden."
+            exit 1
           else
-            echo "Keine Änderung am Manifest."
+            echo "Bilder und Albumübersicht sind aktuell."
           fi
