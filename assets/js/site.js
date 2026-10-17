@@ -42,7 +42,7 @@ const descriptions = {
   'images/house-am-see-2026/DSC_5639.jpg':'Crowd vor der grün beleuchteten Open-Air-Bühne bei House Am See',
   'images/house-am-see-2026/DSC_4902.jpg':'DJ in Bewegung mit farbigen Lichtspuren bei House Am See',
   'images/kvod-3/DSC_7288.jpeg':'Crowd im Bühnennebel bei Komm Vorbei Or Die 3',
-  'images/kvod-3/DSC_6239-Edit.jpeg':'Artist mit Mikrofon bei Komm Vorbei Or Die 3',
+  'images/kvod-3/DSC_6490.jpeg':'DJ mit ausgebreiteten Armen bei Komm Vorbei Or Die 3',
   'images/10.jpg':'Gasse mit Blick auf einen Kirchturm in Haarlem, Niederlande',
   'images/11.JPG':'Orangefarbenes Fahrrad auf einer Grachtenbrücke in Haarlem',
   'images/12.JPG':'Blick von der Jufenalm auf das Selbhorn in Österreich',
