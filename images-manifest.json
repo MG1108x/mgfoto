@@ -1,11 +1,5 @@
 {
-  "": [
-    "10.jpg",
-    "11.JPG",
-    "12.JPG",
-    "13.jpg",
-    "14.JPG"
-  ],
+  "": [],
   "dj-conference-2026": [
     "dj-conference-01.jpg",
     "dj-conference-02.jpg",
@@ -99,7 +93,7 @@
     "MarvinGrammel_marvin.foto_DSC_3889.jpg"
   ],
   "__meta": {
-    "sourceHash": "2016d67a7fdc7567af4ab64c2fb7cf2dd76e6ec435e88bcde9c2890a9066b47f",
+    "sourceHash": "7d77947ee714cb54543210394fef7962135c5a3de30eb326a672deb51f6b30f5",
     "webVersion": 1
   }
 }

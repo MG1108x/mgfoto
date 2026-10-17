@@ -7,7 +7,7 @@ Portfolio von Marvin Grammel · Event-, Festival- und Clubfotografie aus Karlsru
 - `index.html`: Inhalte, Suchmaschinen-Metadaten, Highlights und statische Albumübersicht.
 - `assets/css/site.css`: responsives Layout; `legal.css`: Impressum, Datenschutz und 404.
 - `assets/js/site.js`: Galerie, Albumlinks, Bildansicht, mobiles Menü und Kontaktformular.
-- `albums.js`: Titel, Reihenfolge, Kategorien und Titelbilder der Alben.
+- `albums.js`: Titel, Reihenfolge und Titelbilder der Alben.
 - `images/`: Originalfotos. Diese werden durch die Optimierung nicht verändert.
 - `images-manifest.json`: automatisch gepflegte Bilderliste; `__meta` erkennt auch ersetzte Dateien mit unverändertem Namen.
 - `assets/photos/` und `assets/js/image-variants.js`: optimierte Web-Kopien und Zuordnung.
@@ -17,7 +17,7 @@ Portfolio von Marvin Grammel · Event-, Festival- und Clubfotografie aus Karlsru
 
 1. Bilder in `images/<ordnername>/` hochladen.
 2. In `albums.js` ein Album ergänzen. `slug` muss dem Ordnernamen entsprechen.
-3. Optional `cover` (exakter Dateiname) und `category` ergänzen: `events` oder `personal`.
+3. Optional `cover` (exakter Dateiname) ergänzen; `category` ist `events`.
 4. Die vorhandene GitHub Action aktualisiert `images-manifest.json` und erzeugt optimierte Web-Kopien automatisch. Während der Verarbeitung werden neue Fotos als Original geladen.
 
 ```js
@@ -32,7 +32,7 @@ Portfolio von Marvin Grammel · Event-, Festival- und Clubfotografie aus Karlsru
 ```
 
 Albumlinks sind teilbar, beispielsweise `https://mgfoto.media/#album=kvod-3`.
-Das Album für Bilder direkt unter `images/` hat den Link `#album=personal`.
+Die Galerie zeigt ausschließlich Eventalben in Unterordnern von `images/`.
 
 ## Bilder für das Web optimieren
 
@@ -71,5 +71,5 @@ Es gibt kein Tracking, keine extern geladenen Schriften und keine Instagram-Einb
 ## Prüfung der Überarbeitung
 
 JavaScript-Syntax, lokale Links, Bilder, Manifest, Albumdaten und strukturierte Daten wurden geprüft.
-DOM-Funktionstests simulieren Menü, Filter, Albumnavigation, Bildansicht und Formularantworten ohne echte Anfrage zu versenden.
+DOM-Funktionstests simulieren Menü, Albumnavigation, Bildansicht und Formularantworten ohne echte Anfrage zu versenden.
 Eine visuelle Browserprüfung war in der Ausführungsumgebung nicht verfügbar.

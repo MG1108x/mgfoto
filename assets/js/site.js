@@ -10,7 +10,6 @@ const albumView = document.getElementById('albumView');
 const toolbar = document.querySelector('.gallery-toolbar');
 const galleryStatus = document.getElementById('galleryStatus');
 let manifest = null;
-let activeFilter = 'events';
 let activeAlbum = null;
 let lastAlbumSlug = null;
 let galleryPhotos = [];
@@ -42,12 +41,7 @@ const descriptions = {
   'images/house-am-see-2026/DSC_5639.jpg':'Crowd vor der grün beleuchteten Open-Air-Bühne bei House Am See',
   'images/house-am-see-2026/DSC_4902.jpg':'DJ in Bewegung mit farbigen Lichtspuren bei House Am See',
   'images/kvod-3/DSC_7288.jpeg':'Crowd im Bühnennebel bei Komm Vorbei Or Die 3',
-  'images/kvod-3/DSC_6490.jpeg':'DJ mit ausgebreiteten Armen bei Komm Vorbei Or Die 3',
-  'images/10.jpg':'Gasse mit Blick auf einen Kirchturm in Haarlem, Niederlande',
-  'images/11.JPG':'Orangefarbenes Fahrrad auf einer Grachtenbrücke in Haarlem',
-  'images/12.JPG':'Blick von der Jufenalm auf das Selbhorn in Österreich',
-  'images/13.jpg':'Australian Shepherd Nala',
-  'images/14.JPG':'Australian Shepherd Finny'
+  'images/kvod-3/DSC_6490.jpeg':'DJ mit ausgebreiteten Armen bei Komm Vorbei Or Die 3'
 };
 function pathFor(album,name){ return ['images',album.slug,name].filter(Boolean).join('/'); }
 function photoFor(album,name,index){ const src=pathFor(album,name);return {src,alt:descriptions[src] || `${album.title}${album.ort ? ', '+album.ort : ''} – Aufnahme ${index+1}`,caption:album.title}; }
@@ -69,10 +63,10 @@ function imageFor(photo,size='small'){
 function scrollToGallery(){ document.getElementById('gallery').scrollIntoView({behavior:scrollBehavior(),block:'start'}); }
 function renderOverview(restoreFocus=false){
   activeAlbum=null;galleryPhotos=[];albumView.hidden=true;toolbar.hidden=false;grid.className='album-grid';grid.replaceChildren();
-  const visible=albums.filter(album=>filesFor(album).length && (activeFilter==='all' || (album.category || (album.slug ? 'events' : 'personal'))===activeFilter));
+  const visible=albums.filter(album=>filesFor(album).length);
   for(const album of visible){
     const files=filesFor(album);const name=files.includes(album.cover) ? album.cover : files[0];
-    const card=document.createElement('a');card.className='album-card';card.href='#album='+encodeURIComponent(album.slug || 'personal');card.dataset.slug=album.slug || 'personal';
+    const card=document.createElement('a');card.className='album-card';card.href='#album='+encodeURIComponent(album.slug);card.dataset.slug=album.slug;
     const cover=document.createElement('div');cover.className='album-cover';cover.append(imageFor(photoFor(album,name,files.indexOf(name))));
     const arrow=document.createElement('span');arrow.className='album-arrow';arrow.textContent='↗';arrow.setAttribute('aria-hidden','true');cover.append(arrow);
     const info=document.createElement('div');info.className='album-info';const title=document.createElement('h3');title.textContent=album.title;const meta=document.createElement('p');meta.textContent=[album.ort,album.datum].filter(Boolean).join(' · ');const count=document.createElement('small');count.textContent=files.length+' Fotos';meta.append(count);info.append(title,meta);card.append(cover,info);grid.append(card);
@@ -81,7 +75,7 @@ function renderOverview(restoreFocus=false){
   if(restoreFocus){ const card=Array.from(grid.children).find(card=>card.dataset.slug===lastAlbumSlug);card?.focus({preventScroll:true}); }
 }
 function enterAlbum(album,focus=false){
-  activeAlbum=album;lastAlbumSlug=album.slug || 'personal';toolbar.hidden=true;albumView.hidden=false;grid.className='album-grid photo-grid';grid.replaceChildren();galleryStatus.textContent='';
+  activeAlbum=album;lastAlbumSlug=album.slug;toolbar.hidden=true;albumView.hidden=false;grid.className='album-grid photo-grid';grid.replaceChildren();galleryStatus.textContent='';
   document.getElementById('albumTitle').textContent=album.title;
   const files=filesFor(album);document.getElementById('albumMeta').textContent=[album.ort,album.datum,files.length+' Fotos'].filter(Boolean).join(' · ');
   galleryPhotos=files.map((name,index)=>photoFor(album,name,index));
@@ -96,7 +90,7 @@ function readRoute(focus=false){
   if(!manifest) return;
   if(location.hash.startsWith('#album=')){
     let slug;try{slug=decodeURIComponent(location.hash.slice(7));}catch{slug=null;}
-    const album=albums.find(album=>(album.slug || 'personal')===slug);
+    const album=albums.find(album=>album.slug===slug);
     if(album && filesFor(album).length){enterAlbum(album,focus);return;}
     renderOverview();galleryStatus.textContent='Dieses Album ist aktuell nicht verfügbar. Entdecke die anderen Arbeiten.';return;
   }
@@ -106,11 +100,6 @@ grid.addEventListener('click',event=>{
   const link=event.target.closest('a[href^="#album="]');if(!link || !manifest) return;
   event.preventDefault();history.pushState({album:true},'',link.getAttribute('href'));readRoute(true);
 });
-document.querySelectorAll('[data-filter]').forEach(button=>button.addEventListener('click',()=>{
-  activeFilter=button.dataset.filter;
-  document.querySelectorAll('[data-filter]').forEach(other=>{const on=other===button;other.classList.toggle('active',on);other.setAttribute('aria-pressed',String(on));});
-  if(manifest) renderOverview();
-}));
 document.getElementById('albumBack').addEventListener('click',()=>{history.pushState(null,'','#gallery');readRoute(true);});
 window.addEventListener('popstate',()=>readRoute(true));
 window.addEventListener('hashchange',()=>{if(location.hash.startsWith('#album=') || activeAlbum) readRoute(location.hash.startsWith('#album='));});

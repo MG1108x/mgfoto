@@ -25,7 +25,6 @@
      Standardmäßig ist das erste Bild das Titelbild. Willst du ein
      bestimmtes, ergänze  cover: "dateiname.jpg"  mit dem exakten Namen.
 
-   Hinweis: slug: "" (leer) = Bilder liegen direkt in images/ (ohne Unterordner).
    ══════════════════════════════════════════════════════════════════ */
 
 window.MG_ALBUMS = [
@@ -60,13 +59,5 @@ window.MG_ALBUMS = [
     datum: "2026",
     category: "events",
     cover: "DSC_5639.jpg"
-  },
-  {
-    slug:  "",
-    title: "Natur & Unterwegs",
-    ort:   "",
-    datum: "",
-    category: "personal",
-    cover: "12.JPG"
   }
 ];

@@ -1,34 +1,4 @@
 window.MG_IMAGE_VARIANTS = {
-  "images/10.jpg": {
-    "small": "assets/photos/10.jpg.small.webp",
-    "large": "assets/photos/10.jpg.large.webp",
-    "width": 2048,
-    "height": 1365
-  },
-  "images/11.JPG": {
-    "small": "assets/photos/11.JPG.small.webp",
-    "large": "assets/photos/11.JPG.large.webp",
-    "width": 1365,
-    "height": 2048
-  },
-  "images/12.JPG": {
-    "small": "assets/photos/12.JPG.small.webp",
-    "large": "assets/photos/12.JPG.large.webp",
-    "width": 1365,
-    "height": 2048
-  },
-  "images/13.jpg": {
-    "small": "assets/photos/13.jpg.small.webp",
-    "large": "assets/photos/13.jpg.large.webp",
-    "width": 1365,
-    "height": 2048
-  },
-  "images/14.JPG": {
-    "small": "assets/photos/14.JPG.small.webp",
-    "large": "assets/photos/14.JPG.large.webp",
-    "width": 1365,
-    "height": 2048
-  },
   "images/dj-conference-2026/dj-conference-01.jpg": {
     "small": "assets/photos/dj-conference-2026/dj-conference-01.jpg.small.webp",
     "large": "assets/photos/dj-conference-2026/dj-conference-01.jpg.large.webp",
