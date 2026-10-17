@@ -67,7 +67,7 @@ for(const album of albums){
     if(largeWidth>smallWidth) responsive+=` srcset="${escapeHtml(variant.small)} ${smallWidth}w, ${escapeHtml(variant.large)} ${largeWidth}w" sizes="(max-width: 600px) 92vw, 46vw"`;
   }
   const loading=cards.length<2 ? 'eager' : 'lazy';
-  cards.push(`        <a class="album-card" data-slug="${escapeHtml(album.slug)}" href="#album=${encodeURIComponent(album.slug)}"><div class="album-cover"><img src="${escapeHtml(src)}"${responsive} loading="${loading}" decoding="async" alt="${escapeHtml(album.title)}"></div><div class="album-info"><div><h3>${escapeHtml(album.title)}</h3><p>${escapeHtml([album.ort,album.datum].filter(Boolean).join(' · '))}<small>${files.length} Fotos</small></p></div><span class="album-arrow" aria-hidden="true">↗</span></div></a>`);
+  cards.push(`        <a class="album-card" data-slug="${escapeHtml(album.slug)}" href="#album=${encodeURIComponent(album.slug)}"><div class="album-cover"><img src="${escapeHtml(src)}"${responsive} loading="${loading}" decoding="async" alt="${escapeHtml(album.title)}"></div><div class="album-info"><div><h3>${escapeHtml(album.title)}</h3><p>${escapeHtml([album.ort,album.datum].filter(Boolean).join(' · '))} <small>${files.length} Fotos</small></p></div><span class="album-arrow" aria-hidden="true">↗</span></div></a>`);
 }
 const html=fs.readFileSync('index.html','utf8');
 const marker=/<!-- album-cards:start -->[\s\S]*?<!-- album-cards:end -->/;
