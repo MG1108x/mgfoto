@@ -72,5 +72,12 @@ for(const album of albums){
 const html=fs.readFileSync('index.html','utf8');
 const marker=/<!-- album-cards:start -->[\s\S]*?<!-- album-cards:end -->/;
 if(!marker.test(html)) throw new Error('Missing static album markers in index.html');
-fs.writeFileSync('index.html',html.replace(marker,'<!-- album-cards:start -->\n'+cards.join('\n')+'\n        <!-- album-cards:end -->'));
+let output=html.replace(marker,'<!-- album-cards:start -->\n'+cards.join('\n')+'\n        <!-- album-cards:end -->');
+// Fresh HTML must not pick up styles or album data from an older browser cache.
+for(const asset of ['assets/css/site.css','albums.js','assets/js/image-variants.js','assets/js/site.js']){
+  const hash=crypto.createHash('sha256').update(fs.readFileSync(asset)).digest('hex').slice(0,12);
+  const escaped=asset.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+  output=output.replace(new RegExp('((?:href|src)=")'+escaped+'(?:\\?v=[^" ]*)?"','g'),'$1'+asset+'?v='+hash+'"');
+}
+fs.writeFileSync('index.html',output);
 if(process.env.GITHUB_ACTIONS==='true') execFileSync('git',['add','index.html'],{stdio:'inherit'});

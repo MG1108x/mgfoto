@@ -19,7 +19,7 @@ Die Seite besteht aus einer kurzen Einführung, den Alben und einem Kontaktformu
 },
 ```
 
-Die Galerie-Action pflegt die Bilderliste, erzeugt WebP-Kopien und aktualisiert die Albumkacheln im HTML. Gelöschte Bilder werden auch aus den Web-Kopien entfernt. Fehlerhafte Albumdaten oder fehlende Titelbilder lassen die Action mit einer Fehlermeldung abbrechen.
+Die Galerie-Action pflegt die Bilderliste, erzeugt WebP-Kopien und aktualisiert die Albumkacheln im HTML. Geänderte Styles und Skripte erhalten automatisch eine neue Dateiversion im Link, damit Browser keine veralteten Dateien verwenden. Gelöschte Bilder werden auch aus den Web-Kopien entfernt. Fehlerhafte Albumdaten oder fehlende Titelbilder lassen die Action mit einer Fehlermeldung abbrechen.
 
 Einzelne Fotos hinzufügen oder entfernen: nur den jeweiligen Bilderordner ändern. Die Fotos werden natürlich nach Dateinamen sortiert. Albumlinks sind teilbar, z. B. `https://mgfoto.media/#album=dj-conference-2026`.
 
@@ -33,7 +33,7 @@ Web-Kopien haben maximal 640 bzw. 1600 Pixel an der langen Kante. Die hochgelade
 
 - `index.html`: Einführung, Kontakt, Metadaten und automatisch gepflegte Albumkacheln zwischen den Kommentar-Markierungen.
 - `albums.js`: Titel, Orte, Reihenfolge und Titelbilder.
-- `assets/brand/mg-foto-logo.png`: das Instagram-Logo im Kopfbereich; der schwarze Außenrand wird nur per CSS ausgeblendet.
+- `assets/brand/mg-foto-logo.png`: das Instagram-Logo im Kopfbereich; der schwarze Außenrand wird in einem fest begrenzten SVG-Ausschnitt ausgeblendet.
 - `assets/js/site.js`: Albumansicht, Bildansicht und Formular. Individuelle Bildbeschreibungen stehen unter `descriptions`.
 - `assets/css/site.css`: Layout; `legal.css`: Impressum, Datenschutz und 404.
 - `images-manifest.json`, `assets/photos/`, `assets/js/image-variants.js`: automatisch erzeugte Galerie-Dateien.

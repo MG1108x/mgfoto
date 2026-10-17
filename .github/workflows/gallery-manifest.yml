@@ -11,6 +11,9 @@ on:
       - 'albums.js'
       - 'scripts/build-manifest.js'
       - 'scripts/optimize-images.py'
+      - 'assets/css/site.css'
+      - 'assets/js/site.js'
+      - 'index.html'
     branches:
       - main
   workflow_dispatch:
