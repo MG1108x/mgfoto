@@ -33,6 +33,7 @@ Web-Kopien haben maximal 640 bzw. 1600 Pixel an der langen Kante. Die hochgelade
 
 - `index.html`: Einführung, Kontakt, Metadaten und automatisch gepflegte Albumkacheln zwischen den Kommentar-Markierungen.
 - `albums.js`: Titel, Orte, Reihenfolge und Titelbilder.
+- `assets/brand/mg-foto-logo.png`: das Instagram-Logo im Kopfbereich; der schwarze Außenrand wird nur per CSS ausgeblendet.
 - `assets/js/site.js`: Albumansicht, Bildansicht und Formular. Individuelle Bildbeschreibungen stehen unter `descriptions`.
 - `assets/css/site.css`: Layout; `legal.css`: Impressum, Datenschutz und 404.
 - `images-manifest.json`, `assets/photos/`, `assets/js/image-variants.js`: automatisch erzeugte Galerie-Dateien.
