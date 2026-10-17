@@ -431,12 +431,6 @@ window.MG_IMAGE_VARIANTS = {
     "width": 853,
     "height": 1280
   },
-  "images/kvod-3/DSC_7306.jpeg": {
-    "small": "assets/photos/kvod-3/DSC_7306.jpeg.small.webp",
-    "large": "assets/photos/kvod-3/DSC_7306.jpeg.large.webp",
-    "width": 853,
-    "height": 1280
-  },
   "images/kvod-3/DSC_7454.jpeg": {
     "small": "assets/photos/kvod-3/DSC_7454.jpeg.small.webp",
     "large": "assets/photos/kvod-3/DSC_7454.jpeg.large.webp",
