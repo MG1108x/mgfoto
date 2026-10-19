@@ -1,0 +1,58 @@
+name: Bildergalerie aktualisieren
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'images/**'
+      - 'gallery.json'
+      - 'scripts/**'
+      - 'assets/css/site.css'
+      - 'assets/js/site.js'
+      - 'index.html'
+      - '.github/workflows/gallery.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: gallery
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v4
+      - name: JavaScript prüfen
+        run: |
+          node --check assets/js/site.js
+          node --check scripts/build-gallery.js
+      - name: Bildoptimierung vorbereiten
+        run: |
+          python3 -m venv /tmp/mgfoto-images
+          /tmp/mgfoto-images/bin/python -m pip install --disable-pip-version-check Pillow==11.3.0
+      - name: Bilder und statische Galerie aktualisieren
+        run: |
+          /tmp/mgfoto-images/bin/python scripts/optimize-images.py
+          node scripts/build-gallery.js
+      - name: Änderungen speichern
+        run: |
+          git add index.html photo-metadata.json assets/photos
+          if git diff --cached --quiet; then
+            echo "Bildergalerie ist aktuell."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -m "Bildergalerie automatisch aktualisiert"
+          for i in 1 2 3 4 5; do
+            if git pull --rebase origin main && git push; then
+              exit 0
+            fi
+            sleep 3
+          done
+          echo "Änderungen konnten nicht veröffentlicht werden."
+          exit 1

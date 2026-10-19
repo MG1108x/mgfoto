@@ -1,4 +1,4 @@
-window.MG_IMAGE_VARIANTS = {
+{
   "images/dj-conference-2026/dj-conference-01.jpg": {
     "small": "assets/photos/dj-conference-2026/dj-conference-01.jpg.small.webp",
     "large": "assets/photos/dj-conference-2026/dj-conference-01.jpg.large.webp",
@@ -293,4 +293,4 @@ window.MG_IMAGE_VARIANTS = {
     "width": 2048,
     "height": 1365
   }
-};
+}
