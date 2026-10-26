@@ -107,12 +107,6 @@
     "width": 4032,
     "height": 6048
   },
-  "images/house-am-see-2026/DSC_5192.jpg": {
-    "small": "assets/photos/house-am-see-2026/DSC_5192.jpg.small.webp",
-    "large": "assets/photos/house-am-see-2026/DSC_5192.jpg.large.webp",
-    "width": 6042,
-    "height": 4028
-  },
   "images/house-am-see-2026/DSC_5272.jpg": {
     "small": "assets/photos/house-am-see-2026/DSC_5272.jpg.small.webp",
     "large": "assets/photos/house-am-see-2026/DSC_5272.jpg.large.webp",
@@ -221,6 +215,18 @@
     "width": 853,
     "height": 1280
   },
+  "images/portfolio/DSC_2217.jpg": {
+    "small": "assets/photos/portfolio/DSC_2217.jpg.small.webp",
+    "large": "assets/photos/portfolio/DSC_2217.jpg.large.webp",
+    "width": 1638,
+    "height": 2048
+  },
+  "images/portfolio/DSC_2374.jpg": {
+    "small": "assets/photos/portfolio/DSC_2374.jpg.small.webp",
+    "large": "assets/photos/portfolio/DSC_2374.jpg.large.webp",
+    "width": 1638,
+    "height": 2047
+  },
   "images/unifest-2026/01.jpg": {
     "small": "assets/photos/unifest-2026/01.jpg.small.webp",
     "large": "assets/photos/unifest-2026/01.jpg.large.webp",
@@ -230,12 +236,6 @@
   "images/unifest-2026/03.jpg": {
     "small": "assets/photos/unifest-2026/03.jpg.small.webp",
     "large": "assets/photos/unifest-2026/03.jpg.large.webp",
-    "width": 2048,
-    "height": 1365
-  },
-  "images/unifest-2026/05.jpg": {
-    "small": "assets/photos/unifest-2026/05.jpg.small.webp",
-    "large": "assets/photos/unifest-2026/05.jpg.large.webp",
     "width": 2048,
     "height": 1365
   },
