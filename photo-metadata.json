@@ -292,5 +292,23 @@
     "large": "assets/photos/unifest-2026/MarvinGrammel_marvin.foto_DSC_3889.jpg.large.webp",
     "width": 2048,
     "height": 1365
+  },
+  "images/wax-born-4-this/DSC_8866.jpg": {
+    "small": "assets/photos/wax-born-4-this/DSC_8866.jpg.small.webp",
+    "large": "assets/photos/wax-born-4-this/DSC_8866.jpg.large.webp",
+    "width": 1600,
+    "height": 2400
+  },
+  "images/wax-born-4-this/DSC_9234.jpg": {
+    "small": "assets/photos/wax-born-4-this/DSC_9234.jpg.small.webp",
+    "large": "assets/photos/wax-born-4-this/DSC_9234.jpg.large.webp",
+    "width": 1600,
+    "height": 2400
+  },
+  "images/wax-born-4-this/DSC_9673-black.jpg": {
+    "small": "assets/photos/wax-born-4-this/DSC_9673-black.jpg.small.webp",
+    "large": "assets/photos/wax-born-4-this/DSC_9673-black.jpg.large.webp",
+    "width": 2400,
+    "height": 1600
   }
 }
