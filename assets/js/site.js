@@ -30,22 +30,3 @@ dialog.addEventListener('touchend',event=>{if(!touchStart || !event.changedTouch
 const photoLinks=Array.from(document.querySelectorAll('#photoGrid .photo'));
 const photos=photoLinks.map(link=>({src:link.getAttribute('href'),alt:link.querySelector('img').alt}));
 photoLinks.forEach((link,index)=>link.addEventListener('click',event=>{if(event.ctrlKey||event.metaKey||event.shiftKey||event.altKey)return;event.preventDefault();openLightbox(photos,index,link);}));
-const form=document.getElementById('contactForm');const formStatus=document.getElementById('formStatus');
-let submitting=false;
-form.addEventListener('submit',async event=>{
-  event.preventDefault();if(submitting || !form.reportValidity()) return;
-  const formData=new FormData(form);if(formData.get('botcheck')) return;
-  submitting=true;const button=form.querySelector('button[type="submit"]');button.disabled=true;
-  form.setAttribute('aria-busy','true');formStatus.className='form-status';formStatus.textContent='Deine Anfrage wird gesendet …';
-  const controller=new AbortController();const timeout=setTimeout(()=>controller.abort(),20000);
-  try{
-    const response=await fetch(form.action,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(Object.fromEntries(formData)),signal:controller.signal});
-    const result=await response.json();if(!response.ok || !result.success) throw new Error('Submission failed');
-    formStatus.className='form-status success';formStatus.textContent='Danke! Deine Anfrage ist angekommen. Ich melde mich bei dir.';form.reset();
-  }catch{
-    formStatus.className='form-status error';formStatus.replaceChildren(document.createTextNode('Der Versand konnte nicht bestätigt werden. Deine Eingaben bleiben erhalten. Schreib mir alternativ an '));
-    const mail=document.createElement('a');mail.href='mailto:hello@mgfoto.media';mail.textContent='hello@mgfoto.media';mail.style.textDecoration='underline';formStatus.append(mail,document.createTextNode('.'));
-  }finally{clearTimeout(timeout);button.disabled=false;submitting=false;form.removeAttribute('aria-busy');}
-});
-document.querySelectorAll('a[href="#contact"]').forEach(link=>link.addEventListener('click',()=>{document.getElementById('contactDetails').open=true;}));
-if(location.hash==='#contact') document.getElementById('contactDetails').open=true;

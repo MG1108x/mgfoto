@@ -22,16 +22,16 @@ Lightroom-Export: JPEG, sRGB, Qualität etwa 85 %, lange Kante 2400 Pixel, Ausga
 
 ## Dateien
 
-- `index.html`: kurze Vorstellung, statische Bildergalerie und Kontaktformular.
+- `index.html`: kurze Vorstellung, statische Bildergalerie und E-Mail-Kontakt.
 - `gallery.json`: Reihenfolge und Bildbeschreibungen.
-- `assets/js/site.js`: Großansicht mit Tastatur/Touch und Kontaktformular.
+- `assets/js/site.js`: Großansicht mit Tastatur/Touch.
 - `assets/css/site.css`: Homepage; `legal.css`: rechtliche Seiten und 404.
 - `assets/brand/mg-foto-logo.png`: Logo, im HTML fest begrenzt.
 - `images/`: Quelldateien; `assets/photos/`: generierte WebP-Kopien in zwei Größen.
 - `photo-metadata.json`: generierte Bildgrößen und Dateipfade, nur für die Erstellung der Seite.
 - `scripts/optimize-images.py` und `scripts/build-gallery.js`: Optimierung und statisches HTML.
 
-Die Galerie funktioniert ohne JavaScript. JavaScript ergänzt die Großansicht und den Formularversand ohne Seitenwechsel. Bilder behalten ihre ursprünglichen Seitenverhältnisse; weitere Bilder werden beim Scrollen geladen. Dateiversionen an CSS und JavaScript verhindern veraltete Browser-Caches nach Änderungen.
+Die Galerie funktioniert ohne JavaScript. JavaScript ergänzt die Großansicht. Bilder behalten ihre ursprünglichen Seitenverhältnisse; weitere Bilder werden beim Scrollen geladen. Dateiversionen an CSS und JavaScript verhindern veraltete Browser-Caches nach Änderungen.
 
 ## Lokal aktualisieren
 
@@ -46,4 +46,4 @@ node scripts/build-gallery.js
 
 Die geänderten Dateien einschließlich `index.html`, `photo-metadata.json` und `assets/photos/` committen. Auf GitHub übernimmt die Action diese Schritte automatisch.
 
-Das Kontaktformular nutzt Web3Forms. Der Access Key im HTML ist ein öffentlicher Formularschlüssel. Bei Versandfehlern bleiben Eingaben erhalten und die E-Mail-Adresse erscheint als Alternative. Tests des Versands sollten simuliert werden, damit keine Testanfragen versendet werden. Impressum, Datenschutz und Kontaktangaben bei Änderungen aktuell halten.
+Der Kontaktlink öffnet das E-Mail-Programm. Bei Änderungen der Adresse auch Impressum und Datenschutz aktualisieren.
